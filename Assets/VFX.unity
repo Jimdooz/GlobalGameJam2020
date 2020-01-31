@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 47111390}
   - component: {fileID: 47111389}
   - component: {fileID: 47111388}
+  - component: {fileID: 47111391}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -204,6 +205,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &47111391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47111387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 150
+  m_RefResolutionY: 150
+  m_UpscaleRT: 1
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &4941594346249747379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,15 +232,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7078767504233203316, guid: 5c1c025060500de48a27c7cb47035d72,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.7411765
+      objectReference: {fileID: 0}
     - target: {fileID: 7275580924128787246, guid: 5c1c025060500de48a27c7cb47035d72,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.87
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7275580924128787246, guid: 5c1c025060500de48a27c7cb47035d72,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7275580924128787246, guid: 5c1c025060500de48a27c7cb47035d72,
         type: 3}
