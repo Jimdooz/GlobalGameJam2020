@@ -66,13 +66,13 @@ public class Piece : MonoBehaviour
         }
         // Le joueur a tous les items requis
         repaired++; //On incrémente la réparation
+        interaction.SetPercentage(repaired / nbRepair);
         if (IsComplete()) {
             RunCompleteAnimation();
             if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie
             return 1; // Terminé
         }
         Debug.Log("COUCOU " + repaired + " / " + nbRepair + " --> " + (repaired / nbRepair));
-        interaction.SetPercentage(repaired / nbRepair);
         if (infoPiece) infoPiece.UpdateInfos(itemsNeeded, inventaire);
         return 2; //Construit
     }
