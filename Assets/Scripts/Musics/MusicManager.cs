@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * 
+ * Created by Romain Saclier @2020
+ *
+ */
+
 public class MusicManager : MonoBehaviour
 {
     [System.Serializable]
@@ -9,6 +15,13 @@ public class MusicManager : MonoBehaviour
         public string name;
         public AudioClip clip;
         public bool loop;
+    }
+
+    [System.Serializable]
+    public struct EffectElement
+    {
+        public string name;
+        public List<AudioClip> variants;
     }
 
     #region publicVariables
@@ -24,7 +37,7 @@ public class MusicManager : MonoBehaviour
     float timeToTransition = 0f; //in ms
     int lastIndex = 0;
 
-    public List<SoundElement> allSoundsEffects = new List<SoundElement>();
+    public List<EffectElement> allSoundsEffects = new List<EffectElement>();
     List<AudioSource> allSourcesSoundsEffects = new List<AudioSource>();
 
     string currentName = ""; //Current Sound Play
@@ -100,14 +113,14 @@ public class MusicManager : MonoBehaviour
 
     public void PlayEffect(string effectName)
     {
-        SoundElement found = foundEffect(effectName);
+        EffectElement found = foundEffect(effectName);
         if (found.name != null)
         {
             AudioSource newAudio = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
             Sound2D.Adapt2DSound(newAudio);
             newAudio.maxDistance = maxDistance;
             newAudio.minDistance = minDistance;
-            newAudio.clip = found.clip;
+            newAudio.clip = found.variants[Random.Range(0,found.variants.Count)];
             newAudio.volume = 1f;
             newAudio.Play();
             newAudio.loop = false;
@@ -125,13 +138,13 @@ public class MusicManager : MonoBehaviour
         return default(SoundElement);
     }
 
-    SoundElement foundEffect(string effectName)
+    EffectElement foundEffect(string effectName)
     {
         for (int i = 0; i < allSoundsEffects.Count; i++)
         {
             if (allSoundsEffects[i].name == effectName) return allSoundsEffects[i];
         }
-        return default(SoundElement);
+        return default(EffectElement);
     }
 
     public static MusicManager GetMusicManager()
