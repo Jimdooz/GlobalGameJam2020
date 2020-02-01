@@ -5,7 +5,7 @@ using UnityEngine;
 public class InfoPiece : MonoBehaviour
 {
     public float displamentY = 1.5f;
-    [Range(32f,64f)]
+    [Range(0f,64f)]
     public float padding = 40;
 
     public GameObject bubblePrefab; //Représente une bulle modèle qu'on modifiera
