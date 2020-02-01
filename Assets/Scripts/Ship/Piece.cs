@@ -71,6 +71,7 @@ public class Piece : MonoBehaviour
             if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie
             return 1; // Terminé
         }
+        interaction.setPercentage(repaired / nbRepair);
         if (infoPiece) infoPiece.UpdateInfos(itemsNeeded, inventaire);
         return 2; //Construit
     }

@@ -7,11 +7,10 @@ public class InteractionLoader : InteractionButton
 {
     public Image loader;
     public Color colorLoader;
-    [Range(0f,100f)]
+    [Range(0f,1f)]
     public float percentage = 0f;
 
     private float currPercentage = 0f;
-    private float percentageMax = 100f;
 
     // Start is called before the first frame update
     void Start() {
@@ -26,7 +25,7 @@ public class InteractionLoader : InteractionButton
     // Update is called once per frame
     void Update() {
         currPercentage = Mathf.Lerp(currPercentage, percentage, Time.deltaTime * 5f);
-        this.loader.fillAmount = currPercentage / percentageMax;
+        this.loader.fillAmount = currPercentage;
     }
 
     public void setPercentage(float percentage) {
