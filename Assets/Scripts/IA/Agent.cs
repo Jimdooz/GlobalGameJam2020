@@ -4,8 +4,10 @@ public class Agent : MonoBehaviour
 {
     #region Inspector Variables
     public string tribut = "alpha";
-    public float rangeAlert = 50f;
     public bool startAsWatch;
+    [Header("Vision")]
+    public float rangeAlert = 50f;
+    public LayerMask visionLayerMask;
     [Header("PathFinding")]
     public bool drawPath;
     public float marginDistance = 0.1f; // margin used to know if agent is arrived at target poition
@@ -40,7 +42,7 @@ public class Agent : MonoBehaviour
     bool completedPath;
     #endregion
     #region Agent API
-    public void Alert()
+    public void BecomeAlert()
     {
         alert = true;
     }
@@ -101,7 +103,7 @@ public class Agent : MonoBehaviour
     State state;
     void Idle()
     {
-        if (alert == true)
+        if (alert)
         {
             ChangeToState(Search,searchSpeed);
             return;
@@ -137,7 +139,7 @@ public class Agent : MonoBehaviour
     }
     void Watch()
     {
-        if (alert == true)
+        if (alert)
         {
             ChangeToState(Search,searchSpeed);
             return;
@@ -145,7 +147,7 @@ public class Agent : MonoBehaviour
     }
     void Search()
     {
-        if (alert == false)
+        if (!alert)
         {
             ChangeToState(Idle,idleSpeed);
             return;
@@ -158,7 +160,7 @@ public class Agent : MonoBehaviour
     }
     void Follow()
     {
-        if (alert == false)
+        if (!alert)
         {
             ChangeToState(Idle,idleSpeed);
             return;
@@ -213,5 +215,10 @@ public class Agent : MonoBehaviour
     }
     #endregion
 
+    void Alert()
+    {
+        Collider2D[] colliders=Physics2D.OverlapCircleAll(transform.position, rangeAlert,visionLayerMask);
+
+    }
 
 }
