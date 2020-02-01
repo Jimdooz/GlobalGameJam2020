@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InfoPiece : MonoBehaviour
 {
+    public float displamentY = 32f;
+    public float padding = 32f;
+
     public GameObject bubblePrefab; //Représente une bulle modèle qu'on modifiera
     List<Bubble> bubbles = new List<Bubble>();
     // Start is called before the first frame update
@@ -22,6 +25,8 @@ public class InfoPiece : MonoBehaviour
         Bubble currBubble = bubble.GetComponent<Bubble>();
         currBubble.SetItemSprite(item.graphic);
         bubbles.Add(currBubble);
+
+        RefreshPositionBubble();
     }
 
     public void UpdateInfos(List<Item> itemsNeeded, List<Item> inventory) {
@@ -30,5 +35,13 @@ public class InfoPiece : MonoBehaviour
 
     private void UpdateVisual() {
         //TODO
+    }
+
+    private void RefreshPositionBubble() {
+        float itemsSize = 32f;
+
+        for(int i = 0; i < bubbles.Count; i++) {
+
+        }
     }
 }
