@@ -76,8 +76,8 @@ public class Piece : MonoBehaviour
 
     //Retourn vrai si la pièce est compris dans l'inventaire
     private bool HaveItem(Item item, List<Item> inventaire) {
-        for (int i = 0; i < itemsNeeded.Count; i++) {
-            if (itemsNeeded[i].name == item.name) return true;
+        for (int i = 0; i < inventaire.Count; i++) {
+            if (inventaire[i].id == item.id) return true;
         }
         return false;
     }

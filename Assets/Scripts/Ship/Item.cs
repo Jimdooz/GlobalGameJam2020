@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer)), RequireComponent(typeof(CircleCollider2D))]
 public class Item : MonoBehaviour
 {
-    public string itemName = "";
+    public string id = "";
     public Sprite graphic;
     public bool grabbable = false;
 
