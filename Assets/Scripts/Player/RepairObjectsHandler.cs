@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemsHandler : MonoBehaviour
+public class RepairObjectsHandler : MonoBehaviour
 {
     public List<Item> items;
 
     private bool isNearItem = false;
     public List<Item> nearbyItems = null;
+
+    private bool isNearPiece = false;
+    private Piece nearbyPiece;
 
     void Start()
     {
@@ -19,9 +22,13 @@ public class ItemsHandler : MonoBehaviour
     {
         if (Input.GetButtonDown("InteractButton"))
         {
-            if (isNearItem)
+            if (isNearItem && !isNearPiece)
             {
                 PickItem();
+            }
+            else if (isNearPiece)
+            {
+                RequestRepair();
             }
         }
     }
@@ -55,6 +62,16 @@ public class ItemsHandler : MonoBehaviour
         }
     }
 
+    private void RequestRepair()
+    {
+        if (nearbyPiece.Repair(items) == 1)
+        {
+            WipeUsedItems(nearbyPiece.itemsNeeded);
+            UpdatePieceStatus(false);
+            Debug.Log("La pièce est réparée et inventaire vidé");
+        }
+    }
+
     private void WipeUsedItems(List<Item> usedItems)
     {
         int size = usedItems.Count;
@@ -69,6 +86,13 @@ public class ItemsHandler : MonoBehaviour
             }
         }
     }
+
+    private void UpdatePieceStatus(bool updateValue, Piece newPiece = null)
+    {
+        isNearPiece = updateValue;
+        nearbyPiece = newPiece;
+    }
+
 
     //List tools
     int GetIndexInList(List<Item> listToLook, Item itemToSearch)
@@ -124,6 +148,10 @@ public class ItemsHandler : MonoBehaviour
             Item otherItem = other.GetComponent<Item>();
             RemoveNearItem(GetIndexInList(nearbyItems, otherItem));
         }
+        else if (other.CompareTag("Piece"))
+        {
+            UpdatePieceStatus(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -136,6 +164,11 @@ public class ItemsHandler : MonoBehaviour
             {
                 AddNearItem(other.GetComponent<Item>());
             }
+        }
+        else if (other.CompareTag("Piece"))
+        {
+            Piece otherPiece = other.gameObject.GetComponent<Piece>();
+            UpdatePieceStatus(true, otherPiece);
         }
     }
 }
