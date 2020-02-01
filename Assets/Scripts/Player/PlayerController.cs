@@ -8,11 +8,16 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField]
-    private float moveSpeed = 5.0f;
+    private float walkSpeed = 5.0f;
+    [SerializeField]
+    private float runSpeed = 8.0f;
+    public enum MovementStates { none, walking, running};
+    public MovementStates movementStatus = MovementStates.none;
     private Vector2 movement;
 
+    private Vector2 lastDirection = Vector2.right;
+
     private bool facingRight = true;
-    private bool walking;
 
     private Rigidbody2D rb;
 
@@ -28,6 +33,18 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleDirection();
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (movementStatus != MovementStates.running)
+            {
+                movementStatus = MovementStates.running;
+            }
+            else
+            {
+                movementStatus = MovementStates.walking;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -38,20 +55,79 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         movement = inputScript.normalizedDirection;
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        UpdateMovementStatus();
+        HandleAnimations();
+        if (!(movementStatus == MovementStates.running))
+        {
+            rb.MovePosition(rb.position + movement * walkSpeed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            if (movement != Vector2.zero)
+            {
+                lastDirection = movement;
+            }
+            else
+            {
+                movement = lastDirection;
+            }
+            rb.MovePosition(rb.position + movement * runSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    void UpdateMovementStatus()
+    {
+        if (!(movementStatus == MovementStates.running))
+        {
+            if (movement != Vector2.zero)
+            {
+                movementStatus = MovementStates.walking;
+            }
+            else
+            {
+                movementStatus = MovementStates.none;
+            }
+        }
+    }
+
+    void HandleAnimations()
+    {
+        if (movementStatus == MovementStates.running)
+        {
+            if (animator.GetBool("walking"))
+            {
+                animator.SetBool("walking", false);
+                animator.SetBool("running", true);
+            }
+        }
+        else
+        {
+            if (animator.GetBool("running"))
+            {
+                animator.SetBool("running", false);
+            }
+            if (movementStatus == MovementStates.walking && !animator.GetBool("walking"))
+            {
+                animator.SetBool("walking", true);
+            }
+            else if (!(movementStatus == MovementStates.walking) && animator.GetBool("walking"))
+            {
+                animator.SetBool("walking", false);
+            }
+        }
     }
 
     void HandleDirection()
     {
         if (movement.y < 0)
         {
-            animator.SetTrigger("front");
-            walking = true;
+            //animator.SetTrigger("front");
+            //movementStatus = MovementStates.walking;
         }
         else if (movement.y > 0)
         {
-            animator.SetTrigger("back");
-            walking = true;
+            //animator.SetTrigger("back");
+            //movementStatus = MovementStates.walking;
         }
 
         else
@@ -59,23 +135,23 @@ public class PlayerController : MonoBehaviour
             if (movement.x < 0 || movement.x > 0)
             {
                 flipPlayer();
-                animator.SetTrigger("side");
-                walking = true;
+                //animator.SetTrigger("side");
+                //movementStatus = MovementStates.walking;
+            }
+
+            if (movement.x < 0)
+            {
+              
+            }
+            else if (movement.x > 0)
+            {
+
             }
 
             else
             {
-                walking = false;
+                //movementStatus = MovementStates.none;
             }
-        }
-
-        if (walking && !animator.GetBool("walking"))
-        {
-            animator.SetBool("walking", true);
-        }
-        else if (!walking && animator.GetBool("walking"))
-        {
-            animator.SetBool("walking", false);
         }
     }
 

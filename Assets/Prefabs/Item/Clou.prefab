@@ -67,6 +67,18 @@ PrefabInstance:
       propertyPath: id
       value: Clou
       objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 21300000, guid: 72b75ffe1840fe7489eb486c19f3a074,
+        type: 3}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphicGround
+      value: 
+      objectReference: {fileID: 21300000, guid: 9460ae56bce55dd45b9dfaed3eba65ad,
+        type: 3}
     - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Color.r
@@ -82,6 +94,12 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.4339623
       objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9460ae56bce55dd45b9dfaed3eba65ad,
+        type: 3}
     - target: {fileID: 7920785542994703967, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Name

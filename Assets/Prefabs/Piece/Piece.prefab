@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &569044417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569044419}
+  - component: {fileID: 569044418}
+  m_Layer: 0
+  m_Name: InfoPiece
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &569044419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569044417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7848333400306071274}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &569044418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569044417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8068bbacf54ad34cba9a013c64ac75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displamentY: 1.5
+  padding: 40
+  bubblePrefab: {fileID: 6175896229365123219, guid: e7d1dff13e4e734439d4e93a9c41881c,
+    type: 3}
+  bubbles: []
 --- !u!1 &7848333400142586394
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +110,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 5}
   m_Children:
   - {fileID: 7848333400142586395}
+  - {fileID: 569044419}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,12 +127,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerItemRepair: 2
-  itemsNeeded: []
-  infoPiece: {fileID: 0}
+  itemsNeeded:
+  - {fileID: 2507194071245847717, guid: d7efeb54fcb72d743834a957f81386de, type: 3}
+  - {fileID: 4137511716483813920, guid: aadfa38a755c5c245a597da10c8ea8ca, type: 3}
+  infoPiece: {fileID: 569044418}
   visualBroken: {fileID: 21300000, guid: 4545044716fcaa64e8fc74bdc72c4d9e, type: 3}
   visualRepaired: {fileID: 21300000, guid: 4545044716fcaa64e8fc74bdc72c4d9e, type: 3}
-  interactionPrefab: {fileID: 0}
-  positionInteraction: {fileID: 0}
+  interactionPrefab: {fileID: 8958822880167285314, guid: 710eea79fd5d3cf4285d94dc97cfbb01,
+    type: 3}
+  positionInteraction: {fileID: 7848333400142586395}
 --- !u!212 &7848333400306071061
 SpriteRenderer:
   m_ObjectHideFlags: 0

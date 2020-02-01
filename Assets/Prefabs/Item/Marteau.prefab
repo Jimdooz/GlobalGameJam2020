@@ -72,21 +72,39 @@ PrefabInstance:
       propertyPath: grabbable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphicGround
+      value: 
+      objectReference: {fileID: 21300000, guid: 9460ae56bce55dd45b9dfaed3eba65ad,
+        type: 3}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 21300000, guid: c2d7f52780117764d88667e6c6bf5162,
+        type: 3}
     - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.9811321
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.25192484
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.17123532
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 70bd22a02ec91e9439c58c55023621bb,
+        type: 3}
     - target: {fileID: 7920785542994703967, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Name

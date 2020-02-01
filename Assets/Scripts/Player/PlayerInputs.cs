@@ -9,6 +9,7 @@ public class PlayerInputs : MonoBehaviour
 
     private Vector2 directionInput;
 
+
     [SerializeField]
     private float moveMargin = 0.2f;
 

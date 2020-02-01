@@ -40,6 +40,7 @@ public class RepairObjectsHandler : MonoBehaviour
         if (itemToGrab.Take())
         {
             items.Add(itemToGrab);
+            Piece.UpdateAll(items);
         }
     }
 

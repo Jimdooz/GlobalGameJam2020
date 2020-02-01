@@ -67,6 +67,18 @@ PrefabInstance:
       propertyPath: id
       value: Planche
       objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 21300000, guid: 2980c63994efd924bb44c4a0a48c62e8,
+        type: 3}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphicGround
+      value: 
+      objectReference: {fileID: 21300000, guid: bc28e1991363fc8438cb10e3a177a50b,
+        type: 3}
     - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Color.r
@@ -82,6 +94,12 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.39551443
       objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc28e1991363fc8438cb10e3a177a50b,
+        type: 3}
     - target: {fileID: 7920785542994703967, guid: c9662ec0ba811ca439d5f1158c7ea007,
         type: 3}
       propertyPath: m_Name
