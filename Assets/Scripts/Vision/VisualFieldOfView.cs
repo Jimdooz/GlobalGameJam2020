@@ -16,7 +16,7 @@ public class VisualFieldOfView : MonoBehaviour
     void Start() {
         field = GetComponent<FieldOfView>();
 
-        GameObject light2D = Instantiate(Resources.Load("Prefabs/MAIN_MUSIC", typeof(GameObject))) as GameObject;
+        GameObject light2D = Instantiate(Resources.Load("Prefabs/2D_LIGHT", typeof(GameObject))) as GameObject;
         Light2D observerLight = light2D.GetComponent<Light2D>();
 
         CopyComponent(observerLight, gameObject);
