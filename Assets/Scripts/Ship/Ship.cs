@@ -14,7 +14,9 @@ public class Ship : MonoBehaviour
     #endregion
 
     void Start() {
-        
+        for(int i = 0; i < pieces.Count; i++) {
+            pieces[i].SetShip(this);
+        }
     }
 
     // Update is called once per frame
@@ -28,5 +30,9 @@ public class Ship : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void CheckFinish() {
+
     }
 }
