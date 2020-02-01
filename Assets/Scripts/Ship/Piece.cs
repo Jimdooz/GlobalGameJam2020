@@ -40,6 +40,7 @@ public class Piece : MonoBehaviour
         //Sécurité pour que les items ne puissent pas être pris ni affichés
         for (int i = 0; i < itemsNeeded.Count; i++) {
             itemsNeeded[i].grabbable = false;
+            infoPiece.CreateBubble(itemsNeeded[i]);
         }
 
         interaction = InteractionController.generateInteraction(interactionPrefab).GetComponent<InteractionLoader>();

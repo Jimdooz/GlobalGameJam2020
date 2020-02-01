@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 916412019}
   - component: {fileID: 916412021}
   - component: {fileID: 916412020}
+  - component: {fileID: 916412022}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -263,6 +264,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   itemSprite: {fileID: 0}
+  renderItem: {fileID: 0}
+--- !u!95 &916412022
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916412018}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59102c796007da24586f0a02a13ff3f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1093242452
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,12 +20,19 @@ public class Bubble : MonoBehaviour
         
     }
 
+    //Permet de modifier le sprite
     public void SetItemSprite(Sprite sprite) {
         itemSprite = sprite;
         renderItem.sprite = itemSprite;
     }
 
+    //Permet de mettre en actif la bulle, lorsque le player possède l'item
     public void SetActive(bool active) {
         animator.SetBool("active", active);
+        if (active) {
+            renderItem.color = new Color(1, 1, 1);
+        } else {
+            renderItem.color = new Color(0, 0, 0);
+        }
     }
 }
