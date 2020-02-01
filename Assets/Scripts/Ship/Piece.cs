@@ -14,6 +14,9 @@ public class Piece : MonoBehaviour
 
     public Sprite visualBroken;
     public Sprite visualRepaired;
+    public InteractionButton interactionPrefab;
+    public Transform positionInteraction;
+
     #endregion
 
     #region privateVariables
@@ -23,6 +26,7 @@ public class Piece : MonoBehaviour
     Animator pieceAnimator;
 
     Ship myShip;
+    private InteractionLoader interaction;
     #endregion
 
     // Start is called before the first frame update
@@ -36,7 +40,11 @@ public class Piece : MonoBehaviour
         //Sécurité pour que les items ne puissent pas être pris ni affichés
         for (int i = 0; i < itemsNeeded.Count; i++) {
             itemsNeeded[i].grabbable = false;
+            infoPiece.CreateBubble(itemsNeeded[i]);
         }
+
+        interaction = InteractionController.generateInteraction(interactionPrefab).GetComponent<InteractionLoader>();
+        interaction.transform.position = positionInteraction.position;
     }
 
     // Update is called once per frame

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class InfoPiece : MonoBehaviour
 {
-    private List<Item> itemsNeeded = new List<Item>();
-    private List<Item> items = new List<Item>();
-
+    public GameObject bubblePrefab; //Représente une bulle modèle qu'on modifiera
+    List<Bubble> bubbles = new List<Bubble>();
     // Start is called before the first frame update
     void Start() {
         
@@ -17,9 +16,15 @@ public class InfoPiece : MonoBehaviour
         
     }
 
-    public void UpdateInfos(List<Item> itemsNeeded, List<Item> items) {
-        this.itemsNeeded = itemsNeeded;
-        this.items = items;
+    public void CreateBubble(Item item) {
+        GameObject bubble = Instantiate(bubblePrefab);
+        bubble.transform.SetParent(transform);
+        Bubble currBubble = bubble.GetComponent<Bubble>();
+        currBubble.SetItemSprite(item.graphic);
+        bubbles.Add(currBubble);
+    }
+
+    public void UpdateInfos(List<Item> itemsNeeded, List<Item> inventory) {
         UpdateVisual();
     }
 

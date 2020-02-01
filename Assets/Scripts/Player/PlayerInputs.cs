@@ -45,7 +45,6 @@ public class PlayerInputs : MonoBehaviour
 
         if (directionInput.magnitude > 1)
         {
-            Debug.Log("DIAGONAL");
             normalizedDirection = directionInput / directionInput.magnitude;
         }
         else
