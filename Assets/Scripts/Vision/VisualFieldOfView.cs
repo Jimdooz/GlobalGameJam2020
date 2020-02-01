@@ -29,6 +29,7 @@ public class VisualFieldOfView : MonoBehaviour
         observerLight.color = color;
         observerLight.shadowIntensity = 1f;
         observerLight.shadowVolumeIntensity = 1f;
+        observerLight.intensity = intensity;
     }
 
     Component CopyComponent(Component original, GameObject destination) {
