@@ -20,7 +20,7 @@ public class Piece : MonoBehaviour
     #endregion
 
     #region privateVariables
-    int nbRepair; // Nombre de click total nécéssaire à la réparation
+    float nbRepair; // Nombre de click total nécéssaire à la réparation
     int repaired = 0; // Pourcentage réparé
     SpriteRenderer render;
     Animator pieceAnimator;
