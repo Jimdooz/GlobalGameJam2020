@@ -10,7 +10,7 @@ public class PlayerInputs : MonoBehaviour
     private Vector2 directionInput;
 
     [SerializeField]
-    private float moveMargin;
+    private float moveMargin = 0.2f;
 
 
     void Update()
@@ -29,7 +29,7 @@ public class PlayerInputs : MonoBehaviour
         {
             directionInput += Vector2.left;
         }
-        if (x + moveMargin > 0)
+        if (x - moveMargin > 0)
         {
             directionInput += Vector2.right;
         }
@@ -38,7 +38,7 @@ public class PlayerInputs : MonoBehaviour
         {
             directionInput += Vector2.down;
         }
-        if (y + moveMargin > 0)
+        if (y - moveMargin > 0)
         {
             directionInput += Vector2.up;
         }
