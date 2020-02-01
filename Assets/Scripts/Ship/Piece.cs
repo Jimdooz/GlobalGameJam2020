@@ -52,12 +52,16 @@ public class Piece : MonoBehaviour
     }
 
     //Permet d'ajouter l'item à la réparation
-    public bool Repair(List<Item> inventaire) {
-        if (IsComplete()) return false;
+    // 0 -> Déjà terminé
+    // 1 -> Terminé
+    // 2 -> Construit
+    // 3 -> Items non suffisant
+    public int Repair(List<Item> inventaire) {
+        if (IsComplete()) return 0; // Déjà terminé
         for(int i = 0; i < itemsNeeded.Count; i++) {
             if(!HaveItem(itemsNeeded[i], inventaire)) {
                 //Lancement animation de refus
-                return false;
+                return 3; // Pas items suffisant
             }
         }
         // Le joueur a tous les items requis
@@ -65,10 +69,10 @@ public class Piece : MonoBehaviour
         if (IsComplete()) {
             RunCompleteAnimation();
             if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie
-            return true;
+            return 1; // Terminé
         }
         if (infoPiece) infoPiece.UpdateInfos(itemsNeeded, inventaire);
-        return false;
+        return 2; //Construit
     }
 
     //Retourne si la pièce a été réparé ( même chose wallah )
