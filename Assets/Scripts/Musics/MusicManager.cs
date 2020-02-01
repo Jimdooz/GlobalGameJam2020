@@ -24,6 +24,9 @@ public class MusicManager : MonoBehaviour
     float timeToTransition = 0f; //in ms
     int lastIndex = 0;
 
+    public List<SoundElement> allSoundsEffects = new List<SoundElement>();
+    List<AudioSource> allSourcesSoundsEffects = new List<AudioSource>();
+
     string currentName = ""; //Current Sound Play
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,15 @@ public class MusicManager : MonoBehaviour
             lastIndex = allSources.Count - 1;
             if(allSources[lastIndex]) allSources[lastIndex].volume = Mathf.Lerp(1f, allSourcesBaseVolume[lastIndex], currTimeTransition/timeToTransition);
         }
+        for(int i = 0; i < allSourcesSoundsEffects.Count; i++)
+        {
+            if (!allSourcesSoundsEffects[i].isPlaying)
+            {
+                Destroy(allSourcesSoundsEffects[i]);
+                allSourcesSoundsEffects.RemoveAt(i);
+                i--;
+            }
+        }
     }
 
     public void PlaySound(string musicName, float speedTime = 10f)
@@ -86,6 +98,24 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void PlayEffect(string effectName)
+    {
+        SoundElement found = foundEffect(effectName);
+        if (found.name != null)
+        {
+            AudioSource newAudio = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+            Sound2D.Adapt2DSound(newAudio);
+            newAudio.maxDistance = maxDistance;
+            newAudio.minDistance = minDistance;
+            newAudio.clip = found.clip;
+            newAudio.volume = 1f;
+            newAudio.Play();
+            newAudio.loop = false;
+            allSourcesSoundsEffects.Add(newAudio);
+
+        }
+    }
+
     SoundElement foundSound(string musicName)
     {
         for(int i = 0; i < allMusics.Count; i++)
@@ -95,15 +125,37 @@ public class MusicManager : MonoBehaviour
         return default(SoundElement);
     }
 
-    public static void Play(string musicName, float speedTime = 10f)
+    SoundElement foundEffect(string effectName)
+    {
+        for (int i = 0; i < allSoundsEffects.Count; i++)
+        {
+            if (allSoundsEffects[i].name == effectName) return allSoundsEffects[i];
+        }
+        return default(SoundElement);
+    }
+
+    public static MusicManager GetMusicManager()
     {
         GameObject MAIN_MUSIC = GameObject.Find("MAIN_MUSIC");
         if (!MAIN_MUSIC)
         {
             MAIN_MUSIC = Instantiate(Resources.Load("Prefabs/MAIN_MUSIC", typeof(GameObject))) as GameObject;
+            MAIN_MUSIC.name = "MAIN_MUSIC";
             DontDestroyOnLoad(MAIN_MUSIC);
         }
         MusicManager musicManager = MAIN_MUSIC.GetComponent<MusicManager>();
+        return musicManager;
+    }
+
+    public static void Play(string musicName, float speedTime = 10f)
+    {
+        MusicManager musicManager = MusicManager.GetMusicManager();
         musicManager.PlaySound(musicName, speedTime);
+    }
+
+    public static void Effect(string effectName)
+    {
+        MusicManager musicManager = MusicManager.GetMusicManager();
+        musicManager.PlayEffect(effectName);
     }
 }

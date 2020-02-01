@@ -14,15 +14,14 @@ public class Ship : MonoBehaviour
     #endregion
 
     void Start() {
-        MusicManager.Play("");
         for(int i = 0; i < pieces.Count; i++) {
             pieces[i].SetShip(this);
         }
     }
 
     // Update is called once per frame
-    void Update() {
-        
+    void Update()
+    {
     }
 
     bool AllPiecesComplete() {

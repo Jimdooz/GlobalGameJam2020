@@ -47,3 +47,10 @@ MonoBehaviour:
   maxDistance: 50
   minDistance: 20
   allMusics: []
+  allSoundsEffects:
+  - name: Marteau Enclume 1
+    clip: {fileID: 8300000, guid: 9f13c18053dea7b4a88bf1d2c84641c6, type: 3}
+    loop: 0
+  - name: Marteau Enclume 2
+    clip: {fileID: 8300000, guid: 6c5f3abaed2aebd4ea59d96bd24f8e3f, type: 3}
+    loop: 0
