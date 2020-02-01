@@ -5,6 +5,7 @@ public class Agent : MonoBehaviour
     #region Inspector Variables
     public string tribut = "alpha";
     public float rangeAlert = 50f;
+    public bool startAsWatch;
     [Header("PathFinding")]
     public bool drawPath;
     public float marginDistance = 0.1f; // margin used to know if agent is arrived at target poition
@@ -55,7 +56,14 @@ public class Agent : MonoBehaviour
     }
     void Start()
     {
-        state = Idle;
+        if (startAsWatch)
+        {
+            state = Watch;
+        }
+        else
+        {
+            state = Idle;
+        }
     }
 
     void Update()
