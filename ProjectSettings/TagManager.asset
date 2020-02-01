@@ -19,10 +19,10 @@ TagManager:
   - Pieces
   - Ship
   - Obstacle
-  - Agent
+  - AgentFeets
   - PlayerFeets
   - PlayerBody
-  - 
+  - AgentBody
   - 
   - 
   - 
