@@ -276,7 +276,6 @@ GameObject:
   m_Component:
   - component: {fileID: 726775494}
   - component: {fileID: 726775493}
-  - component: {fileID: 726775495}
   m_Layer: 0
   m_Name: InfoPiece
   m_TagString: Untagged
@@ -315,21 +314,6 @@ Transform:
   m_Father: {fileID: 1135149287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &726775495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726775492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e7ff690357d4468eff6d41cc33e3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 0
-  itemSprite: {fileID: 0}
-  renderItem: {fileID: 0}
 --- !u!1 &1135149281
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,12 +539,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble
       objectReference: {fileID: 0}
-    - target: {fileID: 6175896229365123220, guid: e7d1dff13e4e734439d4e93a9c41881c,
-        type: 3}
-      propertyPath: itemSprite
-      value: 
-      objectReference: {fileID: -5747104299548106761, guid: bb8a7a43a5f9a304093c677ce97207e2,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d1dff13e4e734439d4e93a9c41881c, type: 3}
 --- !u!4 &1276246651 stripped
