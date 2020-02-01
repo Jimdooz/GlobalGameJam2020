@@ -70,6 +70,7 @@ public class ItemsHandler : MonoBehaviour
         }
     }
 
+    //List tools
     int GetIndexInList(List<Item> listToLook, Item itemToSearch)
     {
         int size = listToLook.Count;
