@@ -13,6 +13,7 @@ public class Bubble : MonoBehaviour
     void Start() {
         SetItemSprite(itemSprite);
         animator = GetComponent<Animator>();
+        renderItem.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
     }
 
     // Update is called once per frame
