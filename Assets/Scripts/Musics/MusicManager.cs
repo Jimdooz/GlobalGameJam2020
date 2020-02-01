@@ -15,16 +15,16 @@ public class MusicManager : MonoBehaviour
     public bool startOnPlay = true;
     public float maxDistance = 50f;
     public float minDistance = 20f;
-
-    public string currentName = "";
     #endregion
 
     public List<SoundElement> allMusics = new List<SoundElement>();
     List<AudioSource> allSources = new List<AudioSource>();
     List<float> allSourcesBaseVolume = new List<float>();
-    public float currTimeTransition = 0f; //in ms
-    public float timeToTransition = 0f; //in ms
+    float currTimeTransition = 0f; //in ms
+    float timeToTransition = 0f; //in ms
     int lastIndex = 0;
+
+    string currentName = ""; //Current Sound Play
     // Start is called before the first frame update
     void Start()
     {
@@ -93,5 +93,17 @@ public class MusicManager : MonoBehaviour
             if (allMusics[i].name == musicName) return allMusics[i];
         }
         return default(SoundElement);
+    }
+
+    public static void Play(string musicName, float speedTime = 10f)
+    {
+        GameObject MAIN_MUSIC = GameObject.Find("MAIN_MUSIC");
+        if (!MAIN_MUSIC)
+        {
+            MAIN_MUSIC = Instantiate(Resources.Load("Prefabs/MAIN_MUSIC", typeof(GameObject))) as GameObject;
+            DontDestroyOnLoad(MAIN_MUSIC);
+        }
+        MusicManager musicManager = MAIN_MUSIC.GetComponent<MusicManager>();
+        musicManager.PlaySound(musicName, speedTime);
     }
 }
