@@ -18,6 +18,7 @@ public class VisualFieldOfView : MonoBehaviour
 
         GameObject light2D = Instantiate(Resources.Load("Prefabs/2D_LIGHT", typeof(GameObject))) as GameObject;
         Light2D observerLight = light2D.GetComponent<Light2D>();
+        light2D.transform.parent = transform;
 
         CopyComponent(observerLight, gameObject);
 
