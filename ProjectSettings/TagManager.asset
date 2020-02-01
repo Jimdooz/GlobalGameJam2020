@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Items
+  - Pieces
+  - Ship
+  - Obstacle
+  - Agent
   - 
   - 
   - 
