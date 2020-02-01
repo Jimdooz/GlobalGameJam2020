@@ -5,23 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private PlayerInputs inputScript;
+    private Rigidbody2D rb;
+    private Animator animator;
 
-    [Header("Movement")]
     [SerializeField]
-    private float walkSpeed = 5.0f;
+    private float walkSpeed = 4.0f;
     [SerializeField]
     private float runSpeed = 8.0f;
-    public enum MovementStates { none, walking, running};
-    public MovementStates movementStatus = MovementStates.none;
+
     private Vector2 movement;
-
     private Vector2 lastDirection = Vector2.right;
-
     private bool facingRight = true;
 
-    private Rigidbody2D rb;
-
-    private Animator animator;
+    public enum MovementStates { none, walking, running};
+    public MovementStates movementStatus = MovementStates.none;
 
     void Awake()
     {
@@ -119,43 +116,17 @@ public class PlayerController : MonoBehaviour
 
     void HandleDirection()
     {
-        if (movement.y < 0)
+        if (movement.x > 0 && !facingRight)
         {
-            //animator.SetTrigger("front");
-            //movementStatus = MovementStates.walking;
+            FlipPlayer();
         }
-        else if (movement.y > 0)
+        else if (movement.x < 0 && facingRight)
         {
-            //animator.SetTrigger("back");
-            //movementStatus = MovementStates.walking;
-        }
-
-        else
-        {
-            if (movement.x < 0 || movement.x > 0)
-            {
-                flipPlayer();
-                //animator.SetTrigger("side");
-                //movementStatus = MovementStates.walking;
-            }
-
-            if (movement.x < 0)
-            {
-              
-            }
-            else if (movement.x > 0)
-            {
-
-            }
-
-            else
-            {
-                //movementStatus = MovementStates.none;
-            }
+            FlipPlayer();
         }
     }
 
-    void flipPlayer()
+    void FlipPlayer()
     {
         if (facingRight && movement.x <= 0)
         {
