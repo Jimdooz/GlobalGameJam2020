@@ -6,6 +6,8 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     #region publicVariables
+    [Range(1,5)]
+    public int powerItemRepair = 2; //Nombre de clicks nécéssaire pour réparer un item
     //Représente les items dont la pièce a besoin pour être réparé
     public List<Item> itemsNeeded = new List<Item>();
     public InfoPiece infoPiece;
@@ -15,8 +17,8 @@ public class Piece : MonoBehaviour
     #endregion
 
     #region privateVariables
-    //Représente les items qui ont été donné pour être réparé par le joueur, initialement vide
-    List<Item> items = new List<Item>();
+    int nbRepair; // Nombre de click total nécéssaire à la réparation
+    int repaired = 0; // Pourcentage réparé
     SpriteRenderer render;
     Animator pieceAnimator;
 
@@ -29,8 +31,10 @@ public class Piece : MonoBehaviour
         render = GetComponent<SpriteRenderer>();
         render.sprite = visualBroken;
 
+        nbRepair = itemsNeeded.Count * powerItemRepair;
+
         //Sécurité pour que les items ne puissent pas être pris ni affichés
-        for(int i = 0; i < itemsNeeded.Count; i++) {
+        for (int i = 0; i < itemsNeeded.Count; i++) {
             itemsNeeded[i].grabbable = false;
         }
     }
@@ -41,39 +45,37 @@ public class Piece : MonoBehaviour
     }
 
     //Permet d'ajouter l'item à la réparation
-    public bool AddItem(Item itemToAdd) {
+    public bool Repair(List<Item> inventaire) {
         if (IsComplete()) return false;
-        if(!HaveItem(itemToAdd) && NeedItem(itemToAdd)) {
-            items.Add(itemToAdd);
-            if (IsComplete()) {
-                RunCompleteAnimation();
-                if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie
+        for(int i = 0; i < itemsNeeded.Count; i++) {
+            if(!HaveItem(itemsNeeded[i], inventaire)) {
+                //Lancement animation de refus
+                return false;
             }
-            if (infoPiece) infoPiece.UpdateInfos(itemsNeeded, items);
+        }
+        // Le joueur a tous les items requis
+        repaired++; //On incrémente la réparation
+        if (IsComplete()) {
+            RunCompleteAnimation();
+            if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie
             return true;
         }
+        if (infoPiece) infoPiece.UpdateInfos(itemsNeeded, inventaire);
         return false;
     }
 
-    //Retourne si la pièce a été réparé, ou est complète ( même chose wallah )
+    //Retourne si la pièce a été réparé ( même chose wallah )
     public bool IsComplete() {
-        return items.Count == itemsNeeded.Count;
+        //Le nombre de click total nécéssaire est égal au nombre de click donné
+        return repaired == nbRepair;
     }
 
     public void SetShip(Ship ship) {
         myShip = ship;
     }
 
-    //Retourne vrai si la pièce possède déjà l'item
-    private bool HaveItem(Item item) {
-        for(int i = 0; i < items.Count; i++) {
-            if (items[i].name == item.name) return true;
-        }
-        return false;
-    }
-
-    //Retourn vrai si la pièce à besoin de l'item pour être réparé
-    private bool NeedItem(Item item) {
+    //Retourn vrai si la pièce est compris dans l'inventaire
+    private bool HaveItem(Item item, List<Item> inventaire) {
         for (int i = 0; i < itemsNeeded.Count; i++) {
             if (itemsNeeded[i].name == item.name) return true;
         }
