@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Parralax : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class Parralax : MonoBehaviour
         transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
         foreach (Transform child in transform) {
-            Vector3 size = child.GetComponent<Renderer>().bounds.size;
+            Vector3 size = child.GetComponent<TilemapRenderer>().bounds.size;
             if (child.position.x > cam.transform.position.x + size.x)
             {
                 child.position = new Vector3(child.position.x - size.x * 2, child.position.y, child.position.z);
