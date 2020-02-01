@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalizedDirection: {x: 0, y: 0}
-  moveMargin: 0
+  moveMargin: 0.2
 --- !u!114 &170569362915369093
 MonoBehaviour:
   m_ObjectHideFlags: 0
