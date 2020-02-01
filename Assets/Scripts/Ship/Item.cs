@@ -6,7 +6,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public string id = "";
-    public Sprite graphic;
+    public Sprite graphic; //Sans contour (UI)
+    public Sprite graphicGround; //Avec contour
     public bool grabbable = false;
 
     private bool taken = false;
