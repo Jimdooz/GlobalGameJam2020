@@ -72,8 +72,6 @@ public class Piece : MonoBehaviour
             if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie
             return 1; // Terminé
         }
-        Debug.Log("COUCOU " + repaired + " / " + nbRepair + " --> " + (repaired / nbRepair));
-        if (infoPiece) infoPiece.UpdateInfos(itemsNeeded, inventaire);
         return 2; //Construit
     }
 
@@ -97,5 +95,40 @@ public class Piece : MonoBehaviour
 
     private void RunCompleteAnimation() {
         pieceAnimator.SetBool("Repaired", true);
+    }
+
+    public void checkAllBubble(List<Item> inventaire)
+    {
+        for (int i = 0; i < itemsNeeded.Count; i++)
+        {
+            infoPiece.UpdateInfo(i, HaveItem(itemsNeeded[i], inventaire));
+        }
+    }
+
+    public static void UpdateAll(List<Item> inventaire)
+    {
+        List<GameObject> allPieces = FindGameObjectsInLayer(LayerMask.NameToLayer("Pieces"));
+        for(int i = 0; i < allPieces.Count; i++)
+        {
+            Piece piece = allPieces[i].GetComponent<Piece>();
+            if (piece) piece.checkAllBubble(inventaire);
+        }
+    }
+
+    static List<GameObject> FindGameObjectsInLayer(int layer) {
+        GameObject[] goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        List<GameObject> goList = new List<GameObject>();
+        for (int i = 0; i < goArray.Length; i++)
+        {
+            if (goArray[i].layer == layer)
+            {
+                goList.Add(goArray[i]);
+            }
+        }
+        if (goList.Count == 0)
+        {
+            return null;
+        }
+        return goList;
     }
 }
