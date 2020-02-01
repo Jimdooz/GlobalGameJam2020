@@ -28,7 +28,7 @@ public class InteractionLoader : InteractionButton
         this.loader.fillAmount = currPercentage;
     }
 
-    public void setPercentage(float changePercentage) {
+    public void SetPercentage(float changePercentage) {
         this.percentage = percentage;
     }
 
