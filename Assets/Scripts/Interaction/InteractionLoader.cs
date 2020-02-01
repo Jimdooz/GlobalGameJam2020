@@ -29,7 +29,7 @@ public class InteractionLoader : InteractionButton
     }
 
     public void SetPercentage(float changePercentage) {
-        this.percentage = percentage;
+        percentage = changePercentage;
     }
 
 }
