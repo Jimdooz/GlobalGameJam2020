@@ -18,7 +18,8 @@ public class Item : MonoBehaviour
         renderSprite = GetComponent<SpriteRenderer>();
         itemCollider = GetComponent<CircleCollider2D>();
 
-        renderSprite.sprite = graphic;
+        if (renderSprite.sprite) graphic = renderSprite.sprite;
+        else renderSprite.sprite = graphic;
         if (grabbable) setFree();
         else setTaken();
     }
