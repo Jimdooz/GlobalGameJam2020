@@ -7,6 +7,8 @@ public class followTamere : MonoBehaviour
 
     public Transform target;
 
+    public Vector3 decalage = new Vector3(0,0,0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,6 @@ public class followTamere : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = target.position;
+        transform.position = target.position + decalage;
     }
 }

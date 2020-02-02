@@ -34,5 +34,6 @@ public class CollisionDie : MonoBehaviour
     public void Die()
     {
         transform.parent.gameObject.SetActive(false);
+        MusicManager.Effect("Loose", 0.6f);
     }
 }
