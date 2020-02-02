@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RepairObjectsHandler : MonoBehaviour
 {
+    private PlayerController controller;
+
     public List<Item> items;
 
     private bool isNearItem = false;
@@ -14,6 +16,8 @@ public class RepairObjectsHandler : MonoBehaviour
 
     void Start()
     {
+        controller = GetComponent<PlayerController>();
+
         items = new List<Item>();
         nearbyItems = new List<Item>();
     }
@@ -41,6 +45,7 @@ public class RepairObjectsHandler : MonoBehaviour
         {
             items.Add(itemToGrab);
             Piece.UpdateAll(items);
+            controller.movementStatus = PlayerController.MovementStates.running;
         }
     }
 
@@ -92,6 +97,7 @@ public class RepairObjectsHandler : MonoBehaviour
     {
         isNearPiece = updateValue;
         nearbyPiece = newPiece;
+        controller.movementStatus = PlayerController.MovementStates.walking;
     }
 
 
