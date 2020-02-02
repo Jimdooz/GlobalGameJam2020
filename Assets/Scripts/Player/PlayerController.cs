@@ -31,17 +31,17 @@ public class PlayerController : MonoBehaviour
     {
         HandleDirection();
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            if (movementStatus != MovementStates.running)
-            {
-                movementStatus = MovementStates.running;
-            }
-            else
-            {
-                movementStatus = MovementStates.walking;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.U))
+        //{
+        //    if (movementStatus != MovementStates.running)
+        //    {
+        //        movementStatus = MovementStates.running;
+        //    }
+        //    else
+        //    {
+        //        movementStatus = MovementStates.walking;
+        //    }
+        //}
     }
 
     private void FixedUpdate()
@@ -94,6 +94,10 @@ public class PlayerController : MonoBehaviour
             if (animator.GetBool("walking"))
             {
                 animator.SetBool("walking", false);
+                animator.SetBool("running", true);
+            }
+            else
+            {
                 animator.SetBool("running", true);
             }
         }
