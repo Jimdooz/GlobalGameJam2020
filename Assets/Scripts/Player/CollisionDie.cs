@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CollisionDie : MonoBehaviour
 {
+    public SpriteRenderer playerSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,16 +28,19 @@ public class CollisionDie : MonoBehaviour
 
             if (agent != null && agent.angry)
             {
-                Die();
+                Debug.Log("JE MEURS");
+                MusicManager.Effect("Loose", 0.6f);
+                playerSprite.enabled = false;
+                StartCoroutine("Die",transform.parent.parent);
 
             }
         }
     }
 
-    public void Die()
+    public IEnumerator Die()
     {
-        transform.parent.gameObject.SetActive(false);
-        MusicManager.Effect("Loose", 0.6f);
+        yield return new WaitForSeconds(2.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        transform.parent.gameObject.SetActive(false);
     }
 }
