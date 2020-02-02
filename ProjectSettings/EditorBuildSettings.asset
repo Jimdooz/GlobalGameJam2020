@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Final/StartScreen.unity
+    guid: dfa5e063de211c845bdc50354f777db7
+  - enabled: 1
     path: Assets/Scenes/laz2.unity
     guid: 6454391309282634b901d8e3fbdeb6e6
   m_configObjects: {}

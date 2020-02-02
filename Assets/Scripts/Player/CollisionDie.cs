@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionDie : MonoBehaviour
 {
@@ -35,5 +36,6 @@ public class CollisionDie : MonoBehaviour
     {
         transform.parent.gameObject.SetActive(false);
         MusicManager.Effect("Loose", 0.6f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
