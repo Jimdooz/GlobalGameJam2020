@@ -22,6 +22,7 @@ public class InteractionButton : MonoBehaviour
     {
 
     }
+
     public void show()
     {
         Debug.Log("SHOW");
