@@ -181,6 +181,7 @@ public class RepairObjectsHandler : MonoBehaviour
         }
         else if (other.CompareTag("Piece"))
         {
+            nearbyPiece.UpdatePieceRange(false);
             UpdatePieceStatus(false);
         }
     }
@@ -199,6 +200,7 @@ public class RepairObjectsHandler : MonoBehaviour
         else if (other.CompareTag("Piece"))
         {
             Piece otherPiece = other.gameObject.GetComponent<Piece>();
+            otherPiece.UpdatePieceRange(true);
             UpdatePieceStatus(true, otherPiece);
         }
     }

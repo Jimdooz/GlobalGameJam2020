@@ -14,6 +14,7 @@ public class InteractionButton : MonoBehaviour
     void Start() {
         animator = GetComponent<Animator>();
         button.rectTransform.sizeDelta = new Vector2(button.sprite.rect.width * InteractionButton.unit - InteractionButton.diminue, button.sprite.rect.height * InteractionButton.unit - InteractionButton.diminue);
+        hide();
     }
 
     // Update is called once per frame
@@ -23,13 +24,21 @@ public class InteractionButton : MonoBehaviour
     }
     public void show()
     {
-        if(!animator) animator = GetComponent<Animator>();
+        Debug.Log("SHOW");
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
         animator.SetBool("show", true);
     }
 
     public void hide()
     {
-        if (!animator) animator = GetComponent<Animator>();
+        Debug.Log("HIDE");
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
         animator.SetBool("show", false);
     }
 }
