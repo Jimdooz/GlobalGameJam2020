@@ -134,3 +134,6 @@ MonoBehaviour:
   - name: Finish Partie
     variants:
     - {fileID: 8300000, guid: 517ccfcaf4a19e247b734037b5ae6e02, type: 3}
+  - name: Loose
+    variants:
+    - {fileID: 8300000, guid: eff4c90ed2dd0394f9957b2950334c94, type: 3}
