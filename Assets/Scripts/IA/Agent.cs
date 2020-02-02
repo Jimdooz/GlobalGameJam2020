@@ -8,6 +8,8 @@ public class Agent : MonoBehaviour
     public LayerMask obstacleLayerMask;
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
+    public GameObject alerteObject;
+    public float musicTransition = 1;
     [Header("Vision")]
     public float fovRotateSpeed = 5f;
     public float rangeAlert = 50f;
@@ -76,6 +78,8 @@ public class Agent : MonoBehaviour
         angry = true;
         animator.SetTrigger("alert");
         alert = true;
+        Instantiate(alerteObject,transform.position,Quaternion.identity,transform);
+        MusicManager.Play("Suspens",musicTransition);
         if (this == alerter)
         {
             Debug.Log("yo");
