@@ -141,8 +141,8 @@ public class Navigation2D : MonoBehaviour
     #region Navigation API
     public List<Vector2> GetPathToPoint(Vector2 origin, Vector2 target)
     {
-        Node nOrigin = GetClosestNode(origin);
-        Node nTarget = GetClosestNode(target);
+        Node nOrigin = GetClosestNode2(origin);
+        Node nTarget = GetClosestNode2(target);
         List<Vector2> l = GetPathToNode(nOrigin, nTarget);
         l.RemoveAt(0);
         return l;
@@ -180,7 +180,7 @@ public class Navigation2D : MonoBehaviour
                     continue;
                 }
                 float tempScore = score[current.x, current.y] + c.distance;
-                if (score[n.x, n.y] == 0 || tempScore < score[n.x, n.y] )
+                if (score[n.x, n.y] == 0 || tempScore < score[n.x, n.y])
                 {
                     open.Add(n);
                     n.cameFrom = current;
@@ -210,6 +210,10 @@ public class Navigation2D : MonoBehaviour
         float distance = Mathf.Infinity;
         foreach (Node n in l)
         {
+            if (n == null)
+            {
+                continue;
+            }
             float d = Vector2.Distance(n.position, t.position);
             if (d < distance)
             {
@@ -219,14 +223,36 @@ public class Navigation2D : MonoBehaviour
         }
         return r;
     }
+    Node GetClosestNode2(Vector2 v)
+    {
+        Node n = null;
+        float d = Mathf.Infinity;
+        for (int x = 0; x < w; x++)
+        {
+            for (int y = 0; y < h; y++)
+            {
+                if (!nodes[x, y].IsAvailable())
+                {
+                    continue;
+                }
+                float d2 = Vector2.Distance(v, nodes[x, y].position);
+                if (d2 < d)
+                {
+                    d = d2;
+                    n = nodes[x, y];
+                }
+            }
+        }
+        return n;
+    }
     Node GetClosestNode(Vector2 v)
     {
         int x = Mathf.RoundToInt((v.x + Width / 2) / precision);
         int y = Mathf.RoundToInt((v.y + Height / 2) / precision);
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
-        x = x > w-1 ? w-1 : x;
-        y = y > w-1 ? w-1 : y;
+        x = x > w - 1 ? w - 1 : x;
+        y = y > w - 1 ? w - 1 : y;
         Node current = nodes[x, y];
         Node closest;
         float distance;
@@ -249,13 +275,13 @@ public class Navigation2D : MonoBehaviour
             }
             current = closest;
         }
-        if (current == null)
+        while (current == null)
         {
             closest = null;
             distance = Mathf.Infinity;
-            foreach (Node n in nodes[x, y].GetNeighborsOfNeighbors())
+            foreach (Node n in nodes[x, y].GetNeighborsOfNeighbors(0))
             {
-                if (!n.IsAvailable() || !IsTargetAccessible(n.position, v))
+                if (!n.IsAvailable())
                 {
                     continue;
                 }
@@ -268,12 +294,18 @@ public class Navigation2D : MonoBehaviour
             }
             current = closest;
         }
+        if (current == null)
+        {
+            Debug.Log("xy : " + x + "," + y);
+            Debug.Log("v : " + v.x + "," + v.y);
+            Debug.Log("hw : " + h + "," + w);
+        }
         return current;
     }
     bool IsTargetAccessible(Vector2 target, Vector2 origin)
     {
         Vector2 dir = (target - origin).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(origin,dir,Vector2.Distance(origin,target),layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(origin, dir, Vector2.Distance(origin, target), layerMask);
         return hit.collider == null;
     }
     #endregion
@@ -328,16 +360,19 @@ public class Node
         }
         return l;
     }
-    public List<Node> GetNeighborsOfNeighbors()
+    public List<Node> GetNeighborsOfNeighbors(int lvl)
     {
+
         List<Node> l = new List<Node>();
         foreach (Node n in Neighbors)
         {
             l.AddRange(n.Neighbors);
         }
+
         return l;
     }
-    public override string ToString(){
+    public override string ToString()
+    {
         return "Node : " + x + ',' + y;
     }
 }
