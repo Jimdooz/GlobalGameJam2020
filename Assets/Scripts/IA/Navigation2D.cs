@@ -104,7 +104,6 @@ public class Navigation2D : MonoBehaviour
             if (n.IsAvailable())
             {
                 nodesAvailables.Add(n);
-                Debug.Log("ava : " + n.x + " , " + n.y);
             }
         }
     }
@@ -153,6 +152,10 @@ public class Navigation2D : MonoBehaviour
         Node nOrigin = GetClosestNode2(origin);
         Node nTarget = GetClosestNode2(target);
         List<Vector2> l = GetPathToNode(nOrigin, nTarget);
+        if (l==null)
+        {
+            l = new List<Vector2>();
+        }
         l.RemoveAt(0);
         return l;
     }
@@ -163,7 +166,7 @@ public class Navigation2D : MonoBehaviour
         float t = Time.realtimeSinceStartup;
         List<Node> open = new List<Node>();
         List<Node> closed = new List<Node>();
-        origin.cameFrom = null;
+        origin.cameFrom = origin;
         float[,] score = new float[w, h];
         open.Add(origin);
         Node current;
@@ -205,7 +208,7 @@ public class Navigation2D : MonoBehaviour
         List<Vector2> l = new List<Vector2>();
         Node n = end;
         l.Insert(0, n.position);
-        while (n.cameFrom != null)
+        while (n.cameFrom != n)
         {
             n = n.cameFrom;
             l.Insert(0, n.position);
