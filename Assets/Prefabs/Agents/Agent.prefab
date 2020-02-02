@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae73937edafa8947a251ae585dcfca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 6
+  viewRadius: 4
   viewAngle: 40
   targetMask:
     serializedVersion: 2
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugState: 
-  startAsWatch: 1
+  startAsWatch: 0
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 2048
@@ -175,7 +175,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 5dd887fae654a844db7507a664f188fb, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -313,7 +313,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: b83a14ca2a206f7459842585b3c4ffb9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -394,7 +394,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: a45e820311fb5bb4b8ffb685978ee4a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

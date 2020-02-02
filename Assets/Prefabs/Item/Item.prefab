@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4545044716fcaa64e8fc74bdc72c4d9e, type: 3}
   m_Color: {r: 0.47034898, g: 0.8584906, b: 0.34420612, a: 1}
   m_FlipX: 0
@@ -113,4 +113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: "\xE0 modifier dans les variantes de prefabs !!!!!"
   graphic: {fileID: 21300000, guid: 4545044716fcaa64e8fc74bdc72c4d9e, type: 3}
+  graphicGround: {fileID: 0}
   grabbable: 1
+  itemCarriedPrefab: {fileID: 0}

@@ -14,6 +14,8 @@ public class RepairObjectsHandler : MonoBehaviour
     private bool isNearPiece = false;
     private Piece nearbyPiece;
 
+    [HideInInspector]
+    public bool pickedItem;
     public GameObject UIitemList;
 
     void Start()
@@ -26,6 +28,7 @@ public class RepairObjectsHandler : MonoBehaviour
 
     void Update()
     {
+        pickedItem = false;
         if (Input.GetButtonDown("InteractButton"))
         {
             if (isNearItem && !isNearPiece)
@@ -42,6 +45,7 @@ public class RepairObjectsHandler : MonoBehaviour
     //PICK
     void PickItem()
     {
+        pickedItem = true;
         Item itemToGrab = GetClosestItem();
         if (itemToGrab.Take())
         {
