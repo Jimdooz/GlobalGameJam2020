@@ -113,3 +113,5 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1090393f717b8b143b028cb99255d096, type: 3}
     - {fileID: 8300000, guid: 24617002066585f418596f6020b5a6a1, type: 3}
     - {fileID: 8300000, guid: d3ceeb5c06766e44d8819140dfe3175e, type: 3}
+  - name: Grab Item
+    variants: []
