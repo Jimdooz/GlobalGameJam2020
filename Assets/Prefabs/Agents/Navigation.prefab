@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   draw: 0
   drawUnavailable: 0
-  precision: 0.5
+  precision: 1
   Width: 50
   Height: 50
   layerMask:
