@@ -42,6 +42,7 @@ public class Piece : MonoBehaviour
 
         interaction = InteractionController.generateInteraction(interactionPrefab).GetComponent<InteractionLoader>();
         interaction.transform.position = positionInteraction.position;
+        interaction.hide();
     }
 
     // Update is called once per frame
@@ -94,8 +95,9 @@ public class Piece : MonoBehaviour
 
     private void RunCompleteAnimation() {
         pieceAnimator.SetBool("Repaired", true);
+        infoPiece.ByeAll();
         render.sprite = visualRepaired;
-        interactionPrefab.hide();
+        interaction.hide();
     }
 
     public void checkAllBubble(List<Item> inventaire)
@@ -140,8 +142,8 @@ public class Piece : MonoBehaviour
     {
         if (!IsComplete())
         {
-            if(show) interactionPrefab.show();
-            else interactionPrefab.hide();
+            if(show) interaction.show();
+            else interaction.hide();
         }
     }
 }

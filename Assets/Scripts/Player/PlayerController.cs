@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     private PlayerInputs inputScript;
     private Rigidbody2D rb;
     private Animator animator;
@@ -28,9 +30,16 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         inputScript = GetComponent<PlayerInputs>();
+
+
     }
 
     private void Update()

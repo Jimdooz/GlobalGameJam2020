@@ -221,8 +221,8 @@ public class Navigation2D : MonoBehaviour
     }
     Node GetClosestNode(Vector2 v)
     {
-        int x = Mathf.RoundToInt((v.x + Width / 2) / precision );
-        int y = Mathf.RoundToInt((v.y + Height / 2) / precision );
+        int x = Mathf.RoundToInt((v.x + Width / 2) / precision);
+        int y = Mathf.RoundToInt((v.y + Height / 2) / precision);
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
         x = x > w-1 ? w-1 : x;
@@ -255,7 +255,7 @@ public class Navigation2D : MonoBehaviour
             distance = Mathf.Infinity;
             foreach (Node n in nodes[x, y].GetNeighborsOfNeighbors())
             {
-                if (!n.IsAvailable())
+                if (!n.IsAvailable() || !IsTargetAccessible(n.position, v))
                 {
                     continue;
                 }
@@ -269,6 +269,12 @@ public class Navigation2D : MonoBehaviour
             current = closest;
         }
         return current;
+    }
+    bool IsTargetAccessible(Vector2 target, Vector2 origin)
+    {
+        Vector2 dir = (target - origin).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(origin,dir,Vector2.Distance(origin,target),layerMask);
+        return hit.collider == null;
     }
     #endregion
 }
@@ -334,10 +340,6 @@ public class Node
     public override string ToString(){
         return "Node : " + x + ',' + y;
     }
-    public void Accessible()
-    {
-
-    }
 }
 public class Connection
 {
@@ -371,7 +373,7 @@ public class Connection
     }
     public void Raycast(LayerMask layerMask)
     {
-        Vector2 dir = n2.position - n1.position;
+        Vector2 dir = (n2.position - n1.position).normalized;
         RaycastHit2D rhit = Physics2D.Raycast(n1.position, dir, distance, layerMask.value);
         if (rhit.collider != null)
         {

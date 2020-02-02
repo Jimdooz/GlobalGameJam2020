@@ -18,10 +18,14 @@ public class FieldOfViewEditor : Editor
         Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleB * fow.viewRadius);
 
         Handles.color = Color.red;
-        foreach (Transform visibleTarget in fow.visibleTargets)
+        foreach (Agent visibleTarget in fow.visibleAgents)
         {
-            Handles.DrawLine(fow.transform.position, visibleTarget.position);
+            Handles.DrawLine(fow.transform.position, visibleTarget.transform.position);
         }
+        if (fow.player!=null) {
+            Handles.DrawLine(fow.transform.position, fow.player.position);
+        }
+
     }
 
 }

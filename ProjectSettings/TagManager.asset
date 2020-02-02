@@ -19,8 +19,8 @@ TagManager:
   - Pieces
   - Ship
   - Obstacle
-  - AgentFeets
-  - PlayerFeets
+  - AgentFeet
+  - PlayerFeet
   - PlayerBody
   - AgentBody
   - 
