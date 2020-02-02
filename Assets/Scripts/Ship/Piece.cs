@@ -114,10 +114,13 @@ public class Piece : MonoBehaviour
     public static void UpdateAll(List<Item> inventaire)
     {
         List<GameObject> allPieces = FindGameObjectsInLayer(LayerMask.NameToLayer("Pieces"));
-        for(int i = 0; i < allPieces.Count; i++)
+        if (allPieces!=null)
         {
-            Piece piece = allPieces[i].GetComponent<Piece>();
-            if (piece) piece.checkAllBubble(inventaire);
+            for (int i = 0; i < allPieces.Count; i++)
+            {
+                Piece piece = allPieces[i].GetComponent<Piece>();
+                if (piece) piece.checkAllBubble(inventaire);
+            }
         }
     }
 
