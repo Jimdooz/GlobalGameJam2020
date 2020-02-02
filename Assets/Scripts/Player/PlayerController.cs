@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true;
 
+    public Transform initialPos;
+
     void Awake()
     {
         if (Instance == null)
@@ -40,6 +42,11 @@ public class PlayerController : MonoBehaviour
         inputScript = GetComponent<PlayerInputs>();
 
 
+    }
+
+    private void Start()
+    {
+        transform.position = initialPos.position;
     }
 
     private void Update()
