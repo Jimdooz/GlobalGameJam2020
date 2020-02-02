@@ -22,6 +22,7 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MusicManager.Play("Intro", 5);
     }
 
     bool AllPiecesComplete() {

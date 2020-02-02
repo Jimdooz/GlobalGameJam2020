@@ -46,12 +46,29 @@ MonoBehaviour:
   startOnPlay: 1
   maxDistance: 50
   minDistance: 20
+  volume: 1
   allMusics:
   - name: Intro
     clip: {fileID: 8300000, guid: 451d753bdfcdb9946b54c80e8c6713c0, type: 3}
     loop: 1
   allSoundsEffects:
-  - name: Marteau
+  - name: Marteau Enclume
     variants:
-    - {fileID: 8300000, guid: 9f13c18053dea7b4a88bf1d2c84641c6, type: 3}
-    - {fileID: 8300000, guid: 6c5f3abaed2aebd4ea59d96bd24f8e3f, type: 3}
+    - {fileID: 8300000, guid: 8a5e6aa307c62974586ed731d52e6d88, type: 3}
+    - {fileID: 8300000, guid: 86f8f484c2169214aaf2c08600fae6dd, type: 3}
+    - {fileID: 8300000, guid: 91827ba489618a14493ab37d7f84eec7, type: 3}
+  - name: Reparation
+    variants:
+    - {fileID: 8300000, guid: 707537ea5724d85419447fe76deaca97, type: 3}
+  - name: Footstep Terre
+    variants:
+    - {fileID: 8300000, guid: 478e7111b1a38c547afaac4e25e9083a, type: 3}
+    - {fileID: 8300000, guid: 29dcadf9e0642cd4f98106a7a80b8602, type: 3}
+  - name: Footstep Neige
+    variants:
+    - {fileID: 8300000, guid: e70b523d1dff39a4c9d5e8d391f49648, type: 3}
+    - {fileID: 8300000, guid: 26ad1b9fefd94f24da841f1be4357859, type: 3}
+  - name: Footstep Gravier
+    variants:
+    - {fileID: 8300000, guid: 384581308af0dd24182fe398f714f097, type: 3}
+    - {fileID: 8300000, guid: e5401784c6b598545a0de3c7c6575e0b, type: 3}
