@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     public Sprite graphic; //Sans contour (UI)
     public Sprite graphicGround; //Avec contour
     public bool grabbable = false;
+    public GameObject itemCarriedPrefab;
 
     private bool taken = false;
     private SpriteRenderer renderSprite;
