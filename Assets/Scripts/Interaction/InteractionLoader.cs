@@ -17,7 +17,6 @@ public class InteractionLoader : InteractionButton
         if (loader) {
             loader.color = colorLoader;
         }
-        animator = GetComponent<Animator>();
         button.rectTransform.sizeDelta = new Vector2(button.sprite.rect.width * InteractionButton.unit - InteractionButton.diminue, button.sprite.rect.height * InteractionButton.unit - InteractionButton.diminue);
         loader.rectTransform.sizeDelta = new Vector2(loader.sprite.rect.width * InteractionButton.unit - InteractionButton.diminue, loader.sprite.rect.height * InteractionButton.unit - InteractionButton.diminue);
     }
