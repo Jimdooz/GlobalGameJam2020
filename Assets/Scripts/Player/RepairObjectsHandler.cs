@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RepairObjectsHandler : MonoBehaviour
 {
+    private PlayerController controller;
+
     public List<Item> items;
 
     private bool isNearItem = false;
@@ -12,8 +14,12 @@ public class RepairObjectsHandler : MonoBehaviour
     private bool isNearPiece = false;
     private Piece nearbyPiece;
 
+    public GameObject UIitemList;
+
     void Start()
     {
+        controller = GetComponent<PlayerController>();
+
         items = new List<Item>();
         nearbyItems = new List<Item>();
     }
@@ -41,6 +47,10 @@ public class RepairObjectsHandler : MonoBehaviour
         {
             items.Add(itemToGrab);
             Piece.UpdateAll(items);
+            UpdateUIList();
+            MusicManager.Effect("Grab Item");
+            //MusicManager.Play("");
+            controller.movementStatus = PlayerController.MovementStates.running;
         }
     }
 
@@ -86,12 +96,32 @@ public class RepairObjectsHandler : MonoBehaviour
                 items.RemoveAt(GetIndexInList(items, usedItems[i]));
             }
         }
+        UpdateUIList();
+        Piece.UpdateAll(items);
     }
 
     private void UpdatePieceStatus(bool updateValue, Piece newPiece = null)
     {
         isNearPiece = updateValue;
         nearbyPiece = newPiece;
+        controller.movementStatus = PlayerController.MovementStates.walking;
+    }
+
+    void UpdateUIList()
+    {
+        DeleteAllChilds(UIitemList.transform);
+        foreach (Item item in items)
+        {
+            Instantiate(item.itemCarriedPrefab, UIitemList.transform);
+        }
+    }
+
+    void DeleteAllChilds(Transform aTransform)
+    {
+        for (int i = 0; i < aTransform.childCount; i++)
+        {
+            GameObject.Destroy(aTransform.GetChild(i).gameObject);
+        }
     }
 
 
@@ -151,6 +181,7 @@ public class RepairObjectsHandler : MonoBehaviour
         }
         else if (other.CompareTag("Piece"))
         {
+            nearbyPiece.UpdatePieceRange(false);
             UpdatePieceStatus(false);
         }
     }
@@ -169,6 +200,7 @@ public class RepairObjectsHandler : MonoBehaviour
         else if (other.CompareTag("Piece"))
         {
             Piece otherPiece = other.gameObject.GetComponent<Piece>();
+            otherPiece.UpdatePieceRange(true);
             UpdatePieceStatus(true, otherPiece);
         }
     }

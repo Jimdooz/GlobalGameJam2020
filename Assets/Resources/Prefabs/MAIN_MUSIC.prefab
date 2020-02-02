@@ -48,8 +48,20 @@ MonoBehaviour:
   minDistance: 20
   volume: 1
   allMusics:
-  - name: Intro
-    clip: {fileID: 8300000, guid: 451d753bdfcdb9946b54c80e8c6713c0, type: 3}
+  - name: Calme Tempete
+    clip: {fileID: 8300000, guid: ac7258c3b747dbe4fbb086c1c9117b15, type: 3}
+    loop: 1
+  - name: Course Poursuite
+    clip: {fileID: 8300000, guid: cf85b0683b2d18d41a4520d15ac3aae6, type: 3}
+    loop: 1
+  - name: Debut Partie
+    clip: {fileID: 8300000, guid: a5148b04448c3bf4897a977b0869f4df, type: 3}
+    loop: 1
+  - name: Menu
+    clip: {fileID: 8300000, guid: fc01298477f7d8944a55599740d46130, type: 3}
+    loop: 1
+  - name: Suspens
+    clip: {fileID: 8300000, guid: 0f3fd8c032da09242ad0080cad71b6ef, type: 3}
     loop: 1
   allSoundsEffects:
   - name: Marteau Enclume
@@ -59,16 +71,60 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 91827ba489618a14493ab37d7f84eec7, type: 3}
   - name: Reparation
     variants:
-    - {fileID: 8300000, guid: 707537ea5724d85419447fe76deaca97, type: 3}
+    - {fileID: 8300000, guid: ff1330906c41ded45b81e589c239303a, type: 3}
+    - {fileID: 8300000, guid: 2240df71ccf68b64aa4e681713983b81, type: 3}
+    - {fileID: 8300000, guid: b97d2a8781bd9ee4abf82172f1bd0cee, type: 3}
+    - {fileID: 8300000, guid: 7e9ee8fc3cd00fc40b3d5f139600a7cf, type: 3}
+    - {fileID: 8300000, guid: 9dbf4e46e677dae4ba70afd975f04dc7, type: 3}
+    - {fileID: 8300000, guid: a5ea6d391216171459dbce7ad30d0cc0, type: 3}
+    - {fileID: 8300000, guid: 8faa6225643f4df439f2582b523d4e4e, type: 3}
+    - {fileID: 8300000, guid: 422626dfc8f440444b1d06fb12334ebd, type: 3}
   - name: Footstep Terre
     variants:
-    - {fileID: 8300000, guid: 478e7111b1a38c547afaac4e25e9083a, type: 3}
-    - {fileID: 8300000, guid: 29dcadf9e0642cd4f98106a7a80b8602, type: 3}
+    - {fileID: 8300000, guid: 83194f06a09180f4396b67790cee368d, type: 3}
+    - {fileID: 8300000, guid: 27d19702227d46b4ea9b21fc7384d343, type: 3}
+    - {fileID: 8300000, guid: b2feedfc4e6562644a60ad9f6bf4d640, type: 3}
+    - {fileID: 8300000, guid: 713ace0cda300db48a5c36a2631a2dbb, type: 3}
+    - {fileID: 8300000, guid: dc6b51d71bd486448ad22451733ea633, type: 3}
+    - {fileID: 8300000, guid: c3d253c831568ec4a9c5594130f454b7, type: 3}
+    - {fileID: 8300000, guid: c66f3e07d062b394b9a44cb7b8e86499, type: 3}
+    - {fileID: 8300000, guid: 033d926c43e558e4c9cb781dad9f85c5, type: 3}
+    - {fileID: 8300000, guid: bcce5cde69cef394db7c8a5054e540d8, type: 3}
+    - {fileID: 8300000, guid: bc5495c7e49bafc49b189a93bb78e03c, type: 3}
+    - {fileID: 8300000, guid: 8a4300ca6f1b8164f8a5ebd521ddb9ba, type: 3}
+    - {fileID: 8300000, guid: 3cacb806697874a4b9ab41ea4a9a2008, type: 3}
   - name: Footstep Neige
     variants:
     - {fileID: 8300000, guid: e70b523d1dff39a4c9d5e8d391f49648, type: 3}
     - {fileID: 8300000, guid: 26ad1b9fefd94f24da841f1be4357859, type: 3}
+    - {fileID: 8300000, guid: 05d9151f2b816ee4fa679165d03da946, type: 3}
+    - {fileID: 8300000, guid: 8b1264c3c9408ed4bbd9d942967eb010, type: 3}
+    - {fileID: 8300000, guid: 6b3c63b20a2e15c4bb08dee1f27e037a, type: 3}
+    - {fileID: 8300000, guid: 0a0cbeee6e89ab843b500b0f5bec423d, type: 3}
+    - {fileID: 8300000, guid: 36bcc5c1db7450b4c9b74fd13aaad158, type: 3}
+    - {fileID: 8300000, guid: 3c9bd13ffb6861f4caa44c079b0b49d2, type: 3}
+    - {fileID: 8300000, guid: 3bb4567b34e789f4e90f6cad0583b875, type: 3}
+    - {fileID: 8300000, guid: 85cf8efe4b8fa944eb6b76fa765e3209, type: 3}
+    - {fileID: 8300000, guid: 15599e2a6f3fcdf4a92cddec98dfb152, type: 3}
+    - {fileID: 8300000, guid: 303b4f4bf05812a4cb8b2686ea1303eb, type: 3}
+    - {fileID: 8300000, guid: ee3d058985e1b8244b9cbd4755c9812a, type: 3}
+    - {fileID: 8300000, guid: c0deaf4d06b6f45498a81899705e3997, type: 3}
   - name: Footstep Gravier
     variants:
     - {fileID: 8300000, guid: 384581308af0dd24182fe398f714f097, type: 3}
     - {fileID: 8300000, guid: e5401784c6b598545a0de3c7c6575e0b, type: 3}
+    - {fileID: 8300000, guid: 1a4181773891a8e4d8cc730048535cc0, type: 3}
+    - {fileID: 8300000, guid: 7f197c8b31dcc3b4193e1f998c0fa642, type: 3}
+    - {fileID: 8300000, guid: 6ed286aac4cc1234ca9b489047424e5a, type: 3}
+    - {fileID: 8300000, guid: 3b8d1448bccc22c4f96e2276dde40b19, type: 3}
+    - {fileID: 8300000, guid: 9455e5e237d49cf42a3eac9269ea2682, type: 3}
+    - {fileID: 8300000, guid: 72d2503e0d3aa2146b477c36e99569af, type: 3}
+    - {fileID: 8300000, guid: 46156ae9963a73f40911fec5e387f056, type: 3}
+    - {fileID: 8300000, guid: 8802b42d9b6d1a2489f43c742fde9432, type: 3}
+    - {fileID: 8300000, guid: 7364ad2b6c033cc44bff6477209d8581, type: 3}
+    - {fileID: 8300000, guid: 1090393f717b8b143b028cb99255d096, type: 3}
+    - {fileID: 8300000, guid: 24617002066585f418596f6020b5a6a1, type: 3}
+    - {fileID: 8300000, guid: d3ceeb5c06766e44d8819140dfe3175e, type: 3}
+  - name: Grab Item
+    variants:
+    - {fileID: 8300000, guid: 9c5bbb583aea9b942b5695265287f7fd, type: 3}

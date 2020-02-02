@@ -11,9 +11,12 @@ public class Ship : MonoBehaviour
 
     #region privateVariables
     bool isRepaired = false; //Si le bateau est réparé
+    Animator animator;
     #endregion
 
     void Start() {
+        animator = GetComponent<Animator>();
+
         for(int i = 0; i < pieces.Count; i++) {
             pieces[i].SetShip(this);
         }
@@ -28,12 +31,16 @@ public class Ship : MonoBehaviour
     bool AllPiecesComplete() {
         for(int i = 0; i < pieces.Count; i++) {
             if (!pieces[i].IsComplete()) return false;
+            Debug.Log("i : " + pieces[i].IsComplete());
         }
 
         return true;
     }
 
     public void CheckFinish() {
-
+        if (AllPiecesComplete())
+        {
+            animator.SetTrigger("repair");
+        }
     }
 }
