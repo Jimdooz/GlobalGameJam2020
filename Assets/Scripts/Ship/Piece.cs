@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class Piece : MonoBehaviour
 {
     #region publicVariables
@@ -16,13 +15,13 @@ public class Piece : MonoBehaviour
     public Sprite visualRepaired;
     public InteractionButton interactionPrefab;
     public Transform positionInteraction;
+    public SpriteRenderer render;
 
     #endregion
 
     #region privateVariables
     float nbRepair; // Nombre de click total nécéssaire à la réparation
     int repaired = 0; // Pourcentage réparé
-    SpriteRenderer render;
     Animator pieceAnimator;
 
     Ship myShip;
@@ -32,7 +31,6 @@ public class Piece : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         pieceAnimator = GetComponent<Animator>();
-        render = GetComponent<SpriteRenderer>();
         render.sprite = visualBroken;
 
         nbRepair = itemsNeeded.Count * powerItemRepair;
@@ -96,6 +94,7 @@ public class Piece : MonoBehaviour
 
     private void RunCompleteAnimation() {
         pieceAnimator.SetBool("Repaired", true);
+        render.sprite = visualRepaired;
     }
 
     public void checkAllBubble(List<Item> inventaire)
@@ -131,5 +130,15 @@ public class Piece : MonoBehaviour
             return null;
         }
         return goList;
+    }
+
+    public void EnterPieceRange()
+    {
+        interactionPrefab.show();
+    }
+
+    public void LeavePieceRange()
+    {
+        interactionPrefab.hide();
     }
 }
