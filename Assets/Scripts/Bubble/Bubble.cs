@@ -37,4 +37,9 @@ public class Bubble : MonoBehaviour
             renderItem.color = new Color(0, 0, 0);
         }
     }
+
+    public void Bye()
+    {
+        animator.SetBool("bye", true);
+    }
 }

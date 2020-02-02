@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class InteractionButton : MonoBehaviour
 {
     public Image button;
-    public Animator animator;
+    protected Animator animator;
 
     static protected float unit = 1 / 32f;
     static protected float diminue = 0.00005f;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        animator = GetComponent<Animator>();
         button.rectTransform.sizeDelta = new Vector2(button.sprite.rect.width * InteractionButton.unit - InteractionButton.diminue, button.sprite.rect.height * InteractionButton.unit - InteractionButton.diminue);
     }
 
