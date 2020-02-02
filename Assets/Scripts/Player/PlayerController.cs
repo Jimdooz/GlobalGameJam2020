@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public float speedSoundRun = 0.2f;
     float timeSound = 0f;
 
+    private bool canMove = true;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,7 +52,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (canMove)
+        {
+            Move();
+        }
     }
 
     void Move()
@@ -168,5 +173,10 @@ public class PlayerController : MonoBehaviour
             transform.localScale = theScale;
             facingRight = !facingRight;
         }
+    }
+
+    public void Die()
+    {
+        canMove = false;
     }
 }

@@ -48,8 +48,20 @@ MonoBehaviour:
   minDistance: 20
   volume: 1
   allMusics:
-  - name: Intro
-    clip: {fileID: 8300000, guid: 451d753bdfcdb9946b54c80e8c6713c0, type: 3}
+  - name: Calme Tempete
+    clip: {fileID: 8300000, guid: ac7258c3b747dbe4fbb086c1c9117b15, type: 3}
+    loop: 1
+  - name: Course Poursuite
+    clip: {fileID: 8300000, guid: cf85b0683b2d18d41a4520d15ac3aae6, type: 3}
+    loop: 1
+  - name: Debut Partie
+    clip: {fileID: 8300000, guid: a5148b04448c3bf4897a977b0869f4df, type: 3}
+    loop: 1
+  - name: Menu
+    clip: {fileID: 8300000, guid: fc01298477f7d8944a55599740d46130, type: 3}
+    loop: 1
+  - name: Suspens
+    clip: {fileID: 8300000, guid: 0f3fd8c032da09242ad0080cad71b6ef, type: 3}
     loop: 1
   allSoundsEffects:
   - name: Marteau Enclume
@@ -114,4 +126,5 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 24617002066585f418596f6020b5a6a1, type: 3}
     - {fileID: 8300000, guid: d3ceeb5c06766e44d8819140dfe3175e, type: 3}
   - name: Grab Item
-    variants: []
+    variants:
+    - {fileID: 8300000, guid: 9c5bbb583aea9b942b5695265287f7fd, type: 3}
