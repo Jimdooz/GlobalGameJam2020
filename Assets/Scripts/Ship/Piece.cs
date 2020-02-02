@@ -95,13 +95,17 @@ public class Piece : MonoBehaviour
     private void RunCompleteAnimation() {
         pieceAnimator.SetBool("Repaired", true);
         render.sprite = visualRepaired;
+        interactionPrefab.hide();
     }
 
     public void checkAllBubble(List<Item> inventaire)
     {
-        for (int i = 0; i < itemsNeeded.Count; i++)
+        if (!IsComplete())
         {
-            infoPiece.UpdateInfo(i, HaveItem(itemsNeeded[i], inventaire));
+            for (int i = 0; i < itemsNeeded.Count; i++)
+            {
+                infoPiece.UpdateInfo(i, HaveItem(itemsNeeded[i], inventaire));
+            }
         }
     }
 
@@ -132,13 +136,12 @@ public class Piece : MonoBehaviour
         return goList;
     }
 
-    public void EnterPieceRange()
+    public void UpdatePieceRange(bool show = true)
     {
-        interactionPrefab.show();
-    }
-
-    public void LeavePieceRange()
-    {
-        interactionPrefab.hide();
+        if (!IsComplete())
+        {
+            if(show) interactionPrefab.show();
+            else interactionPrefab.hide();
+        }
     }
 }

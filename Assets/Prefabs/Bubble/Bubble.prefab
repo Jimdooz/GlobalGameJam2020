@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  itemSprite: {fileID: -5747104299548106761, guid: bb8a7a43a5f9a304093c677ce97207e2,
+  itemSprite: {fileID: -5895844658555057305, guid: bb8a7a43a5f9a304093c677ce97207e2,
     type: 3}
   renderItem: {fileID: 6175896230523828836}
 --- !u!212 &6175896229365123221

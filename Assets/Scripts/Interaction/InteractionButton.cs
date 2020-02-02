@@ -23,11 +23,13 @@ public class InteractionButton : MonoBehaviour
     }
     public void show()
     {
+        if(!animator) animator = GetComponent<Animator>();
         animator.SetBool("show", true);
     }
 
     public void hide()
     {
+        if (!animator) animator = GetComponent<Animator>();
         animator.SetBool("show", false);
     }
 }
