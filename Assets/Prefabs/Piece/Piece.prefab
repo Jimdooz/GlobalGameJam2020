@@ -208,9 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerItemRepair: 2
-  itemsNeeded:
-  - {fileID: 2507194071245847717, guid: d7efeb54fcb72d743834a957f81386de, type: 3}
-  - {fileID: 4137511716483813920, guid: aadfa38a755c5c245a597da10c8ea8ca, type: 3}
+  itemsNeeded: []
   infoPiece: {fileID: 569044418}
   visualBroken: {fileID: 21300000, guid: be59b08561bf8f846b93fc529a589da5, type: 3}
   visualRepaired: {fileID: 21300000, guid: 8acedc6972395b4468b7eed873bc74fd, type: 3}
