@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         inputScript = GetComponent<PlayerInputs>();
-
-
     }
 
     private void Start()

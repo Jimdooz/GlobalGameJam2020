@@ -7,10 +7,8 @@ public class Ship : MonoBehaviour
 {
     #region publicVariables
     public List<Piece> pieces = new List<Piece>();
-    public Transform shorePoint;
     public float speed;
-
-    public bool moveToShore = true;
+    public Transform initialPos;
 
     #endregion
 
@@ -22,6 +20,11 @@ public class Ship : MonoBehaviour
     void Start() {
         animator = GetComponentInChildren<Animator>();
 
+        if (initialPos != null)
+        {
+            transform.position = initialPos.position;
+        }
+
         for(int i = 0; i < pieces.Count; i++) {
             pieces[i].SetShip(this);
         }
@@ -31,7 +34,6 @@ public class Ship : MonoBehaviour
     void Update()
     {
         MusicManager.Play("Intro", 5);
-        MoveToShore();
     }
 
     bool AllPiecesComplete() {
@@ -50,20 +52,20 @@ public class Ship : MonoBehaviour
         }
     }
 
-    public void MoveToShore()
-    {
-        if (moveToShore)
-        {
-            Debug.Log("hahaha");
-            transform.position = Vector2.MoveTowards(transform.position, shorePoint.position, speed * Time.deltaTime);
+    //public void MoveToShore()
+    //{
+    //    if (moveToShore)
+    //    {
+    //        Debug.Log("hahaha");
+    //        transform.position = Vector2.MoveTowards(transform.position, shorePoint.position, speed * Time.deltaTime);
 
-            if (Vector2.Distance(transform.position, shorePoint.position) < 0.00001)
-            {
-                moveToShore = false;
-                animator.SetTrigger("break");
-            }
-        }
-    }
+    //        if (Vector2.Distance(transform.position, shorePoint.position) < 0.00001)
+    //        {
+    //            moveToShore = false;
+    //            animator.SetTrigger("break");
+    //        }
+    //    }
+    //}
 
     //IEnumerator MoveTo(Vector2 destination)
     //{
