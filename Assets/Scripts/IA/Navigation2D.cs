@@ -15,6 +15,7 @@ public class Navigation2D : MonoBehaviour
     public Vector2 agentColliderOffSet;
     #endregion  
     Node[,] nodes;
+    List<Node> nodesAvailables = new List<Node>();
     float drawNodeSize = 0.05f;
     int w, h;
     #region Unity API
@@ -98,6 +99,14 @@ public class Navigation2D : MonoBehaviour
             }
         }
         GenerateConnections();
+        foreach (Node n in nodes)
+        {
+            if (n.IsAvailable())
+            {
+                nodesAvailables.Add(n);
+                Debug.Log("ava : " + n.x + " , " + n.y);
+            }
+        }
     }
     void GenerateConnections()
     {
@@ -227,81 +236,74 @@ public class Navigation2D : MonoBehaviour
     {
         Node n = null;
         float d = Mathf.Infinity;
-        for (int x = 0; x < w; x++)
+        foreach (Node n2 in nodesAvailables)
         {
-            for (int y = 0; y < h; y++)
+            float d2 = Vector2.Distance(v, n2.position);
+            if (d2 < d)
             {
-                if (!nodes[x, y].IsAvailable())
-                {
-                    continue;
-                }
-                float d2 = Vector2.Distance(v, nodes[x, y].position);
-                if (d2 < d)
-                {
-                    d = d2;
-                    n = nodes[x, y];
-                }
+                d = d2;
+                n = n2;
             }
         }
         return n;
     }
-    Node GetClosestNode(Vector2 v)
-    {
-        int x = Mathf.RoundToInt((v.x + Width / 2) / precision);
-        int y = Mathf.RoundToInt((v.y + Height / 2) / precision);
-        x = x < 0 ? 0 : x;
-        y = y < 0 ? 0 : y;
-        x = x > w - 1 ? w - 1 : x;
-        y = y > w - 1 ? w - 1 : y;
-        Node current = nodes[x, y];
-        Node closest;
-        float distance;
-        if (!current.IsAvailable())
-        {
-            closest = null;
-            distance = Mathf.Infinity;
-            foreach (Node n in current.Neighbors)
-            {
-                if (!n.IsAvailable())
-                {
-                    continue;
-                }
-                float d = Vector2.Distance(v, n.position);
-                if (d < distance)
-                {
-                    closest = n;
-                    distance = d;
-                }
-            }
-            current = closest;
-        }
-        while (current == null)
-        {
-            closest = null;
-            distance = Mathf.Infinity;
-            foreach (Node n in nodes[x, y].GetNeighborsOfNeighbors(0))
-            {
-                if (!n.IsAvailable())
-                {
-                    continue;
-                }
-                float d = Vector2.Distance(v, n.position);
-                if (d < distance)
-                {
-                    closest = n;
-                    distance = d;
-                }
-            }
-            current = closest;
-        }
-        if (current == null)
-        {
-            Debug.Log("xy : " + x + "," + y);
-            Debug.Log("v : " + v.x + "," + v.y);
-            Debug.Log("hw : " + h + "," + w);
-        }
-        return current;
-    }
+    //Node GetClosestNode(Vector2 v)
+    //{
+    //    int x = Mathf.RoundToInt((v.x + Width / 2) / precision);
+    //    int y = Mathf.RoundToInt((v.y + Height / 2) / precision);
+    //    x = x < 0 ? 0 : x;
+    //    y = y < 0 ? 0 : y;
+    //    x = x > w - 1 ? w - 1 : x;
+    //    y = y > w - 1 ? w - 1 : y;
+    //    Node current = nodes[x, y];
+    //    Node closest;
+    //    float distance;
+    //    if (!current.IsAvailable())
+    //    {
+    //        closest = null;
+    //        distance = Mathf.Infinity;
+    //        foreach (Node n in current.Neighbors)
+    //        {
+    //            if (!n.IsAvailable())
+    //            {
+    //                continue;
+    //            }
+    //            float d = Vector2.Distance(v, n.position);
+    //            if (d < distance)
+    //            {
+    //                closest = n;
+    //                distance = d;
+    //            }
+    //        }
+    //        current = closest;
+    //    }
+    //    if (current == null)
+    //    {
+    //        closest = null;
+    //        distance = Mathf.Infinity;
+    //        foreach (Node n in nodes[x, y].GetNeighborsOfNeighbors(0))
+    //        {
+    //            if (!n.IsAvailable())
+    //            {
+    //                continue;
+    //            }
+    //            float d = Vector2.Distance(v, n.position);
+    //            if (d < distance)
+    //            {
+    //                closest = n;
+    //                distance = d;
+    //            }
+    //        }
+    //        current = closest;
+    //    }
+    //    if (current == null)
+    //    {
+    //        Debug.Log("xy : " + x + "," + y);
+    //        Debug.Log("v : " + v.x + "," + v.y);
+    //        Debug.Log("hw : " + h + "," + w);
+    //    }
+    //    return current;
+    //}
     bool IsTargetAccessible(Vector2 target, Vector2 origin)
     {
         Vector2 dir = (target - origin).normalized;

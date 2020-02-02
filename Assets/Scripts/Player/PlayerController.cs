@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
+    public RepairObjectsHandler handler;
     private PlayerInputs inputScript;
     private Rigidbody2D rb;
     private Animator animator;

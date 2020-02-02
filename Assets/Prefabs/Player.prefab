@@ -246,11 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffdcd36cb2f89d468bf143981d8de98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handler: {fileID: 5888337657783853515}
   walkSpeed: 4
   runSpeed: 8
   movementStatus: 0
   speedSoundWalk: 0.3
   speedSoundRun: 0.2
+  initialPos: {fileID: 0}
 --- !u!114 &5888337657783853515
 MonoBehaviour:
   m_ObjectHideFlags: 0

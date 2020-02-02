@@ -62,6 +62,8 @@ public class Agent : MonoBehaviour
     float notInVisionTimer;
     float lookArroundTimer;
     float toIdleTimer;
+
+    bool angry = false;
     #endregion
     #region Agent Alert
     void BecomeAlert(Agent alerter)
@@ -70,16 +72,19 @@ public class Agent : MonoBehaviour
         {
             return;
         }
+        angry = true;
         animator.SetTrigger("alert");
         alert = true;
         if (this == alerter)
         {
+            Debug.Log("yo");
             return;
         }
         this.alerter = alerter;
     }
     public void Alert()
     {
+        Debug.Log("y");
         BecomeAlert(this);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, rangeAlert, visionLayerMask);
         foreach (Collider2D c in colliders)
@@ -185,9 +190,19 @@ public class Agent : MonoBehaviour
     State state;
     void Idle()
     {
+        if (PlayerIsInVision() && PlayerController.Instance.handler.pickedItem)
+        {
+            ChangeToState(Follow);
+            return;
+        }
         if (alert)
         {
             ChangeToState(Search);
+            return;
+        }
+        if (angry && PlayerIsInVision())
+        {
+            ChangeToState(Follow);
             return;
         }
         if (atDestination)
@@ -217,6 +232,11 @@ public class Agent : MonoBehaviour
     }
     void Watch()
     {
+        if (PlayerIsInVision() && PlayerController.Instance.handler.pickedItem)
+        {
+            ChangeToState(Follow);
+            return;
+        }
         if (alert)
         {
             ChangeToState(Search);
@@ -275,7 +295,12 @@ public class Agent : MonoBehaviour
     }
     void LookArround()
     {
-        if (PlayerIsInVision())
+
+        if (PlayerIsInVision() && PlayerController.Instance.handler.pickedItem)
+        {
+            ChangeToState(Follow);
+            return;
+        }else if (PlayerIsInVision())
         {
             ChangeToState(Follow);
             return;
@@ -323,7 +348,6 @@ public class Agent : MonoBehaviour
         destinationIndex = 0;
         if (newState == Search)
         {
-            alert = true;
             animator.SetBool("run", true);
             speed = runSpeed;
             debugState = "Search";
@@ -331,7 +355,7 @@ public class Agent : MonoBehaviour
         }
         else if (newState == Follow)
         {
-            alert = true;
+            Alert();
             animator.SetBool("run", true);
             speed = runSpeed;
             debugState = "Follow";
