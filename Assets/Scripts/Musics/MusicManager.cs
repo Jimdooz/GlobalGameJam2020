@@ -28,6 +28,8 @@ public class MusicManager : MonoBehaviour
     public bool startOnPlay = true;
     public float maxDistance = 50f;
     public float minDistance = 20f;
+    [Range(0f,1f)]
+    public float volume = 1f;
     #endregion
 
     public List<SoundElement> allMusics = new List<SoundElement>();
@@ -71,7 +73,7 @@ public class MusicManager : MonoBehaviour
             }
             //Last
             lastIndex = allSources.Count - 1;
-            if(allSources[lastIndex]) allSources[lastIndex].volume = Mathf.Lerp(1f, allSourcesBaseVolume[lastIndex], currTimeTransition/timeToTransition);
+            if(allSources[lastIndex]) allSources[lastIndex].volume = Mathf.Lerp(volume, allSourcesBaseVolume[lastIndex], currTimeTransition/timeToTransition);
         }
         for(int i = 0; i < allSourcesSoundsEffects.Count; i++)
         {
@@ -81,6 +83,26 @@ public class MusicManager : MonoBehaviour
                 allSourcesSoundsEffects.RemoveAt(i);
                 i--;
             }
+        }
+    }
+
+    public void SetVolume(float newVolume = 1f, float speedTime = 5f)
+    {
+        newVolume = newVolume > 1 ? 1 : newVolume;
+        newVolume = newVolume < 0 ? 0 : newVolume;
+        volume = newVolume;
+        timeToTransition = speedTime;
+        currTimeTransition = timeToTransition;
+
+        InitVolumes();
+    }
+
+    void InitVolumes()
+    {
+        allSourcesBaseVolume.Clear();
+        for (int i = 0; i < allSources.Count; i++)
+        {
+            allSourcesBaseVolume.Add(allSources[i].volume);
         }
     }
 
@@ -103,16 +125,13 @@ public class MusicManager : MonoBehaviour
             newAudio.loop = found.loop;
             allSources.Add(newAudio);
 
-            allSourcesBaseVolume.Clear();
-            for(int i = 0; i < allSources.Count; i++)
-            {
-                allSourcesBaseVolume.Add(allSources[i].volume);
-            }
+            InitVolumes();
         }
     }
 
-    public void PlayEffect(string effectName)
+    public void PlayEffect(string effectName, float volumeSound = -1f)
     {
+        volumeSound = volumeSound == -1 ? volume : volumeSound;
         EffectElement found = foundEffect(effectName);
         if (found.name != null)
         {
@@ -121,7 +140,7 @@ public class MusicManager : MonoBehaviour
             newAudio.maxDistance = maxDistance;
             newAudio.minDistance = minDistance;
             newAudio.clip = found.variants[Random.Range(0,found.variants.Count)];
-            newAudio.volume = 1f;
+            newAudio.volume = volumeSound;
             newAudio.Play();
             newAudio.loop = false;
             allSourcesSoundsEffects.Add(newAudio);
@@ -160,15 +179,35 @@ public class MusicManager : MonoBehaviour
         return musicManager;
     }
 
-    public static void Play(string musicName, float speedTime = 10f)
+    public static void Play(string musicName, float speedTime = 10f, float volumeSound = -1f)
     {
         MusicManager musicManager = MusicManager.GetMusicManager();
         musicManager.PlaySound(musicName, speedTime);
+        if (volumeSound != -1) musicManager.SetVolume(volumeSound, speedTime);
     }
 
-    public static void Effect(string effectName)
+    public static void Effect(string effectName, float volumeSound = -1f)
     {
         MusicManager musicManager = MusicManager.GetMusicManager();
-        musicManager.PlayEffect(effectName);
+        musicManager.PlayEffect(effectName, volumeSound);
+    }
+
+    public static void Effect(string effectName, Vector3 position, float volumeSound = -1f)
+    {
+        MusicManager musicManager = MusicManager.GetMusicManager();
+        GameObject ONE_SHOT = Instantiate(Resources.Load("Prefabs/ONE_SHOT", typeof(GameObject))) as GameObject;
+        EffectElement found = musicManager.foundEffect(effectName);
+        if (found.name != null)
+        {
+            volumeSound = volumeSound == -1f ? musicManager.volume : volumeSound;
+            ONE_SHOT.transform.position = position;
+            ONE_SHOT.GetComponent<OneShotEffect>().Play(found.variants[Random.Range(0, found.variants.Count)], volumeSound);
+        }
+    }
+
+    public static void Volume(float volume = 1f, float speedTime = 5f)
+    {
+        MusicManager musicManager = MusicManager.GetMusicManager();
+        musicManager.SetVolume(volume, speedTime);
     }
 }
