@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     public enum MovementStates { none, walking, running};
     public MovementStates movementStatus = MovementStates.none;
 
+    public float speedSoundWalk = 0.3f;
+    public float speedSoundRun = 0.2f;
+    float timeSound = 0f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,9 +58,22 @@ public class PlayerController : MonoBehaviour
         movement = inputScript.normalizedDirection;
         UpdateMovementStatus();
         HandleAnimations();
+        timeSound += Time.deltaTime;
         if (!(movementStatus == MovementStates.running))
         {
             rb.MovePosition(rb.position + movement * walkSpeed * Time.fixedDeltaTime);
+            if (movementStatus == MovementStates.none)
+            {
+                timeSound = 0f;
+            }
+            else
+            {
+                if (timeSound >= speedSoundWalk)
+                {
+                    timeSound = 0f;
+                    MusicManager.Effect("Footstep Terre", 0.5f);
+                }
+            }
         }
         else
         {
@@ -69,6 +86,11 @@ public class PlayerController : MonoBehaviour
                 movement = lastDirection;
             }
             rb.MovePosition(rb.position + movement * runSpeed * Time.fixedDeltaTime);
+            if (timeSound >= speedSoundRun)
+            {
+                timeSound = 0f;
+                MusicManager.Effect("Footstep Terre", 0.5f);
+            }
         }
     }
 
