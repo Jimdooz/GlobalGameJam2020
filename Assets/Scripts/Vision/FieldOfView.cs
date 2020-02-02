@@ -13,7 +13,9 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstacleMask;
 
     [HideInInspector]
-    public List<Transform> visibleTargets = new List<Transform>();
+    public List<Agent> visibleAgents = new List<Agent>();
+    [HideInInspector]
+    public Transform player;
 
     void Start()
     {
@@ -32,9 +34,9 @@ public class FieldOfView : MonoBehaviour
 
     public void FindVisibleTargets()
     {
-        visibleTargets.Clear();
+        visibleAgents.Clear();
+        player = null;
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), viewRadius, targetMask);
-
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
@@ -46,7 +48,16 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    visibleTargets.Add(target);
+                    Agent a = target.GetComponent<Agent>();
+                    if (a!=null)
+                    {
+                        visibleAgents.Add(a);
+                    }
+                    else if (LayerMask.NameToLayer("PlayerBody") == target.gameObject.layer|| LayerMask.NameToLayer("PlayerFeet") == target.gameObject.layer)
+                    {
+                        player = target;
+                    }
+
                 }
             }
         }
