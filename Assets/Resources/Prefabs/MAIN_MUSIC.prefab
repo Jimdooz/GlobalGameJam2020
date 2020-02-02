@@ -128,3 +128,9 @@ MonoBehaviour:
   - name: Grab Item
     variants:
     - {fileID: 8300000, guid: 9c5bbb583aea9b942b5695265287f7fd, type: 3}
+  - name: Construct Finish
+    variants:
+    - {fileID: 8300000, guid: a17c133304b5cfa45a7b4cd08fc1b5e4, type: 3}
+  - name: Finish Partie
+    variants:
+    - {fileID: 8300000, guid: 517ccfcaf4a19e247b734037b5ae6e02, type: 3}

@@ -185,7 +185,7 @@ public class RepairObjectsHandler : MonoBehaviour
         }
         else if (other.CompareTag("Piece"))
         {
-            nearbyPiece.UpdatePieceRange(false);
+            if(nearbyPiece) nearbyPiece.UpdatePieceRange(false);
             UpdatePieceStatus(false);
         }
     }

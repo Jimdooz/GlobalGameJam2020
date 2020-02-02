@@ -70,6 +70,7 @@ public class Piece : MonoBehaviour
         if (IsComplete()) {
             RunCompleteAnimation();
             if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie
+            MusicManager.Effect("Construct Finish", 0.8f);
             return 1; // Terminé
         }
         return 2; //Construit
