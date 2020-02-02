@@ -9,6 +9,9 @@ public class Ship : MonoBehaviour
     public List<Piece> pieces = new List<Piece>();
     public float speed;
     public Transform initialPos;
+    public int nextLevel;
+
+    public SceneHandler fader;
 
     #endregion
 
@@ -49,6 +52,7 @@ public class Ship : MonoBehaviour
         if (AllPiecesComplete())
         {
             animator.SetTrigger("repair");
+            fader.TransitionToNextScene(nextLevel);
         }
     }
 

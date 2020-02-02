@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/laz2.unity
     guid: 6454391309282634b901d8e3fbdeb6e6
+  - enabled: 1
+    path: Assets/LEVEL_1.unity
+    guid: 677ac13c18fa1824e9e6ffe42b4a0c98
+  - enabled: 1
+    path: Assets/LEVEL_2.unity
+    guid: 27e41d3e47680c24c979f274fd1a809a
   m_configObjects: {}
