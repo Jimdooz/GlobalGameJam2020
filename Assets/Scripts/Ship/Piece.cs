@@ -42,6 +42,7 @@ public class Piece : MonoBehaviour
 
         interaction = InteractionController.generateInteraction(interactionPrefab).GetComponent<InteractionLoader>();
         interaction.transform.position = positionInteraction.position;
+        interaction.hide();
     }
 
     // Update is called once per frame
