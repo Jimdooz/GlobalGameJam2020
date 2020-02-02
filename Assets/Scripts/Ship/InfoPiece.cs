@@ -49,4 +49,11 @@ public class InfoPiece : MonoBehaviour
             start += (padding / 32f);
         }
     }
+
+    public void ByeAll()
+    {
+        for (int i = 0; i < bubbles.Count; i++) {
+            bubbles[i].Bye();
+        }
+    }
 }

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5593475903100865146
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703937, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: id
+      value: Tent
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphic
+      value: 
+      objectReference: {fileID: 21300000, guid: 5299aa52c5cb54548ba0387be51d4ce4,
+        type: 3}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: graphicGround
+      value: 
+      objectReference: {fileID: 21300000, guid: acef1121022551d4f80439fd1402d05b,
+        type: 3}
+    - target: {fileID: 7920785542994703939, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: itemCarriedPrefab
+      value: 
+      objectReference: {fileID: 3718048699157526024, guid: 8503e031a3e37c84b9988018e8957cb7,
+        type: 3}
+    - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785542994703966, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5299aa52c5cb54548ba0387be51d4ce4,
+        type: 3}
+    - target: {fileID: 7920785542994703967, guid: c9662ec0ba811ca439d5f1158c7ea007,
+        type: 3}
+      propertyPath: m_Name
+      value: Tent
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9662ec0ba811ca439d5f1158c7ea007, type: 3}
