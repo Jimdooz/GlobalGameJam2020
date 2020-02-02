@@ -18,7 +18,7 @@ public class InteractionController : MonoBehaviour
 
     public static GameObject generateInteraction(InteractionButton interaction) {
         GameObject worldUI = GameObject.Find("WORLD_UI");
-        GameObject instanciate = Instantiate(interaction.gameObject);
+        GameObject instanciate = Instantiate(interaction.gameObject) as GameObject;
         instanciate.transform.SetParent(worldUI.transform);
         return instanciate;
     }
