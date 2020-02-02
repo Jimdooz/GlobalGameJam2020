@@ -7,7 +7,7 @@ public class followTamere : MonoBehaviour
 
     public Transform target;
 
-    public Vector2 decalage = new Vector2(0,0);
+    public Vector3 decalage = new Vector3(0,0,0);
 
     // Start is called before the first frame update
     void Start()
