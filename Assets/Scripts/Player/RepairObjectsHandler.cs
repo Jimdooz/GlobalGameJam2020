@@ -91,6 +91,7 @@ public class RepairObjectsHandler : MonoBehaviour
                 items.RemoveAt(GetIndexInList(items, usedItems[i]));
             }
         }
+        Piece.UpdateAll(items);
     }
 
     private void UpdatePieceStatus(bool updateValue, Piece newPiece = null)
