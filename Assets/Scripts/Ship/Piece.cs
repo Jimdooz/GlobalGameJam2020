@@ -67,6 +67,7 @@ public class Piece : MonoBehaviour
         // Le joueur a tous les items requis
         repaired++; //On incrémente la réparation
         interaction.SetPercentage(repaired / nbRepair);
+        MusicManager.Effect("Reparation");
         if (IsComplete()) {
             RunCompleteAnimation();
             if (myShip) myShip.CheckFinish(); // Prévenir le bateau lorsque la pièce est finie

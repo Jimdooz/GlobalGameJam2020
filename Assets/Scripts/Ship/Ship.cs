@@ -28,12 +28,16 @@ public class Ship : MonoBehaviour
     bool AllPiecesComplete() {
         for(int i = 0; i < pieces.Count; i++) {
             if (!pieces[i].IsComplete()) return false;
+            Debug.Log("i : " + pieces[i].IsComplete());
         }
 
         return true;
     }
 
     public void CheckFinish() {
-
+        if (AllPiecesComplete())
+        {
+            Debug.Log("Bateau réparé");
+        }
     }
 }
