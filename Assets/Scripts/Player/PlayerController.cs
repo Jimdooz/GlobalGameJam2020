@@ -46,7 +46,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        transform.position = initialPos.position;
+        if (initialPos != null)
+        {
+            transform.position = initialPos.position;
+        }
     }
 
     private void Update()
