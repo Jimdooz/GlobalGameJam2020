@@ -192,9 +192,4 @@ public class PlayerController : MonoBehaviour
             facingRight = !facingRight;
         }
     }
-
-    public void Die()
-    {
-        canMove = false;
-    }
 }

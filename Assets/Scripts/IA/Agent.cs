@@ -63,7 +63,8 @@ public class Agent : MonoBehaviour
     float lookArroundTimer;
     float toIdleTimer;
 
-    bool angry = false;
+    [HideInInspector]
+    public bool angry = false;
     #endregion
     #region Agent Alert
     void BecomeAlert(Agent alerter)
