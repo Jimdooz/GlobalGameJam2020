@@ -25,7 +25,7 @@ public class Sound2D : MonoBehaviour
     }
 
     public static void Adapt2DSound(AudioSource audioSource) {
-        audioSource.spatialBlend = 0.5f;  //Set spatial Blend in 3D
+        audioSource.spatialBlend = 1f;  //Set spatial Blend in 3D
         audioSource.dopplerLevel = 0f;    //Remove doppler Level
         audioSource.spread = 0f;          //Remove Spread
         audioSource.rolloffMode = AudioRolloffMode.Linear; //Set constant fade by distance

@@ -26,8 +26,8 @@ public class OneShotEffect : MonoBehaviour
             audioSource.clip = clip;
             audioSource.volume = volume;
             audioSource.loop = false;
-            audioSource.maxDistance = 50f;
-            audioSource.minDistance = 20f;
+            audioSource.maxDistance = 15f;
+            audioSource.minDistance = 5f;
             audioSource.Play();
         }
     }
