@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public float nextWayPointDistance = 3f;
 
     public Transform target;
+    public FieldOfView2 view;
 
     Path path;
     int currentWayPoint = 0;
@@ -44,6 +45,9 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        Debug.Log(view.visibleTargets.Count);
+
         if(path == null) return;
 
         if(currentWayPoint >= path.vectorPath.Count){
