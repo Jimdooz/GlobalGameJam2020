@@ -127,8 +127,6 @@ public class EnemyAI : MonoBehaviour
             var desiredRotQ = Quaternion.Euler(view.transform.eulerAngles.x, view.transform.eulerAngles.y, nextView);
             view.transform.rotation = Quaternion.Lerp(view.transform.rotation, desiredRotQ, Time.deltaTime * 1);
         }
-
-        Debug.Log(rb.velocity);
     }
 
     void PlayWalk(){

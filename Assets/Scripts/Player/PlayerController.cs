@@ -84,6 +84,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void stop(){
+        canMove = false;
+    }
+
     void HandleVision(){
         if(vision.visibleTargets.Count > 0){
             bool playWarningSound = true;

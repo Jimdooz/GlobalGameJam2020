@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class CollisionDie : MonoBehaviour
 {
     public SpriteRenderer playerSprite;
+    public Animator animator;
+    public PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -21,18 +23,17 @@ public class CollisionDie : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.layer == LayerMask.NameToLayer("AgentBody"))
         {
-            Agent agent = collision.transform.parent.GetComponent<Agent>();
+            EnemyAI agent = collision.gameObject.GetComponent<EnemyAI>();
 
-            if (agent != null && agent.angry)
+            if (agent != null && agent.state == EnemyAI.states.Angry)
             {
                 Debug.Log("JE MEURS");
                 MusicManager.Effect("Loose", 0.6f);
-                playerSprite.enabled = false;
                 StartCoroutine("Die",transform.parent.parent);
-
+                player.stop();
+                animator.SetBool("DIE", true);
             }
         }
     }
