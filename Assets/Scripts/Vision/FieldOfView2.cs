@@ -7,6 +7,7 @@ public class FieldOfView2 : MonoBehaviour
 
     public float viewRadius;
     public float viewMinRadius;
+    public float viewMinArea;
     [Range(0, 360)]
     public float viewAngle;
 
@@ -41,10 +42,9 @@ public class FieldOfView2 : MonoBehaviour
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector2 dirToTarget = (target.position - transform.position).normalized;
-            if (Vector2.Angle(transform.up, dirToTarget) < viewAngle / 2)
+            float dstToTarget = Vector2.Distance(transform.position, target.position);
+            if (Vector2.Angle(transform.up, dirToTarget) < viewAngle / 2 || dstToTarget <= viewMinArea)
             {
-                float dstToTarget = Vector2.Distance(transform.position, target.position);
-
                 if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask) || dstToTarget <= viewMinRadius)
                 {
                     visibleTargets.Add(target);
@@ -58,7 +58,7 @@ public class FieldOfView2 : MonoBehaviour
     {
         if (!angleIsGlobal)
         {
-            angleInDegrees += transform.eulerAngles.y;
+            angleInDegrees -= transform.eulerAngles.z;
         }
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), 0);
     }

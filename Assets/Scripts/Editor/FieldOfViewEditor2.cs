@@ -13,6 +13,8 @@ public class FieldOfViewEditor2 : Editor
         Handles.DrawWireArc(fow.transform.position, Vector3.forward, Vector3.left, 360, fow.viewRadius);
         Handles.color = Color.blue;
         Handles.DrawWireArc(fow.transform.position, Vector3.forward, Vector3.left, 360, fow.viewMinRadius);
+        Handles.color = Color.green;
+        Handles.DrawWireArc(fow.transform.position, Vector3.forward, Vector3.left, 360, fow.viewMinArea);
         Vector3 viewAngleA = fow.DirFromAngle(-fow.viewAngle / 2, false);
         Vector3 viewAngleB = fow.DirFromAngle(fow.viewAngle / 2, false);
         Handles.color = Color.white;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public FieldOfView2 vision;
+
     public static PlayerController Instance;
 
     public RepairObjectsHandler handler;
@@ -27,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public float speedSoundRun = 0.2f;
     float timeSound = 0f;
 
+    float timerCalmeMusic = 6f;
+    float timerCalmeMusicNow = 0f;
+
     private bool canMove = true;
 
     public Transform initialPos;
@@ -49,11 +55,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = initialPos.position;
         }
+        MusicManager.Play("Calme Tempete", 1f);
     }
 
     private void Update()
     {
         HandleDirection();
+        HandleVision();
 
         //if (Input.GetKeyDown(KeyCode.U))
         //{
@@ -73,6 +81,28 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             Move();
+        }
+    }
+
+    void HandleVision(){
+        if(vision.visibleTargets.Count > 0){
+            bool playWarningSound = true;
+            for(int i = 0; i < vision.visibleTargets.Count; i++){
+                if(vision.visibleTargets[i].gameObject.GetComponent<EnemyAI>().state == EnemyAI.states.Angry){
+                    playWarningSound = false;
+                    movementStatus = PlayerController.MovementStates.running;
+                }
+            }
+            if(playWarningSound){
+                timerCalmeMusicNow = 0;
+                MusicManager.Play("Suspens", 5f);
+            }
+        }else{
+            timerCalmeMusicNow += Time.deltaTime;
+            if(timerCalmeMusicNow > timerCalmeMusic){
+                MusicManager.Play("Calme Tempete", 5f);
+                    movementStatus = PlayerController.MovementStates.walking;
+            }
         }
     }
 
@@ -108,7 +138,7 @@ public class PlayerController : MonoBehaviour
             {
                 movement = lastDirection;
             }
-            rb.MovePosition(rb.position + movement * runSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * (runSpeed) * Time.fixedDeltaTime);
             if (timeSound >= speedSoundRun)
             {
                 timeSound = 0f;

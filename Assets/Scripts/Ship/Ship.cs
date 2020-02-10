@@ -13,6 +13,9 @@ public class Ship : MonoBehaviour
 
     public SceneHandler fader;
 
+    bool startWaitTimeNextScene = false;
+    float timeWait = 3f;
+
     #endregion
 
     #region privateVariables
@@ -37,6 +40,10 @@ public class Ship : MonoBehaviour
     void Update()
     {
         MusicManager.Play("Intro", 5);
+        if(startWaitTimeNextScene) timeWait -= Time.deltaTime;
+        if(timeWait <= 0){
+            fader.TransitionToNextScene(nextLevel);
+        }
     }
 
     bool AllPiecesComplete() {
@@ -52,7 +59,8 @@ public class Ship : MonoBehaviour
         if (AllPiecesComplete())
         {
             animator.SetTrigger("repair");
-            fader.TransitionToNextScene(nextLevel);
+            startWaitTimeNextScene = true;
+            MusicManager.Play("Menu", 1f);
         }
     }
 

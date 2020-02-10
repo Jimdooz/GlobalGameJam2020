@@ -54,7 +54,6 @@ public class RepairObjectsHandler : MonoBehaviour
             UpdateUIList();
             MusicManager.Effect("Grab Item");
             //MusicManager.Play("");
-            controller.movementStatus = PlayerController.MovementStates.running;
         }
     }
 
